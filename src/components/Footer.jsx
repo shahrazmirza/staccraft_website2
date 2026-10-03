@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, MapPin, Mail } from 'lucide-react';
 
 export default function Footer() {
-  // The contact page already is the call to action, so skip repeating it there.
-  const showCta = useLocation().pathname !== '/contact';
   return (
     <footer className="bg-[#231F20] text-[#FFFFFF] border-t border-white/10">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-          {showCta && <div className="lg:col-span-5">
+          <div className="lg:col-span-5">
             <div className="text-xs tracking-[0.25em] uppercase text-neutral-500 mb-6">/ Ready when you are</div>
             <h2 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-tight mb-8">
               Craft your <span className="serif-italic-accent">stack.</span>
@@ -25,9 +23,9 @@ export default function Footer() {
                 info@staccraft.com.au <Mail className="w-4 h-4"/>
               </a>
             </div>
-          </div>}
+          </div>
 
-          <div className={`${showCta ? 'lg:col-span-7' : 'lg:col-span-12'} grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-sm`}>
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-sm">
             <div>
               <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Platform</div>
               <ul className="space-y-2.5">

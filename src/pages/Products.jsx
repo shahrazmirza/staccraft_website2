@@ -100,8 +100,8 @@ export default function Products() {
       </section>
 
       {/* Suite band */}
-      <section className="px-6 md:px-10 py-16 md:py-24 bg-[#231F20] text-[#FFFFFF]">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-10 items-center">
+      <section className="px-6 md:px-10 pb-16 md:pb-24">
+        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#231F20] text-[#FFFFFF] p-8 md:p-16 grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-4">/ One suite</div>
             <h3 className="font-serif text-4xl md:text-5xl leading-tight">
