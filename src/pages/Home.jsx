@@ -53,10 +53,12 @@ export default function Home() {
           </div>
 
           {/* Hero image collage */}
-          {/* Images are absolutely positioned so their natural size never drives the
-              layout — the main tile sets the height and the side column matches it. */}
+          {/* Images are absolutely positioned so their natural size never drives the layout.
+              The spacer gives the main tile its minimum 16:9 height; as a plain grid item it
+              still stretches if the side column needs more room, so both columns always match. */}
           <div className="grid grid-cols-12 gap-4 mt-16 md:mt-20">
-            <Link to="/cases" className="col-span-12 md:col-span-8 relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/9] group">
+            <Link to="/cases" className="col-span-12 md:col-span-8 relative rounded-2xl overflow-hidden group">
+              <div aria-hidden="true" className="aspect-[4/3] sm:aspect-[16/9]" />
               <img src={heroImages.main} alt="Kit racks ready for distribution" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"/>
               <div className="absolute bottom-5 left-5 right-5 md:bottom-8 md:left-8 md:right-8 flex items-end justify-between gap-4 text-white">
@@ -73,11 +75,11 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden aspect-square md:aspect-auto">
                 <img src={heroImages.side} alt="Personalised team jersey" className="absolute inset-0 w-full h-full object-cover object-center" />
               </div>
-              <div className="relative rounded-2xl overflow-hidden bg-[#231F20] text-[#FFFFFF] p-5 md:p-7 flex flex-col justify-between aspect-square md:aspect-auto">
+              <div className="relative rounded-2xl overflow-hidden bg-[#231F20] text-[#FFFFFF] p-5 xl:p-7 flex flex-col justify-between aspect-square md:aspect-auto">
                 <Sparkles className="w-6 h-6 text-[#B4D234]"/>
                 <div>
                   <div className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-2">// AI native</div>
-                  <div className="font-serif text-lg sm:text-2xl leading-tight">Assistants shaped around <em className="font-serif italic text-[#B4D234]">your</em> catalogue.</div>
+                  <div className="font-serif text-lg sm:text-2xl md:text-xl xl:text-2xl leading-tight">Assistants shaped around <em className="font-serif italic text-[#B4D234]">your</em> catalogue.</div>
                 </div>
               </div>
             </div>
