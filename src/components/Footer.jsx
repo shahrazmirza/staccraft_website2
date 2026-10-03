@@ -51,7 +51,7 @@ export default function Footer() {
             <div>
               <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Studio</div>
               <ul className="space-y-2.5 text-white/70">
-                <li className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0"/> Sydney · Melbourne, AU</li>
+                <li className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0"/> Melbourne, AU</li>
                 <li><a href="mailto:info@staccraft.com.au" className="link-hover">info@staccraft.com.au</a></li>
               </ul>
             </div>
@@ -59,10 +59,10 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between pt-8 gap-4 text-xs text-white/50">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#FFFFFF] rounded flex items-center justify-center">
-              <span className="font-serif text-[#231F20] font-semibold">S</span>
-            </div>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <Link to="/" className="shrink-0">
+              <img src="/assets/logo-light.png" alt="StacCraft" className="h-7 w-auto" />
+            </Link>
             <span>© {new Date().getFullYear()} StacCraft. Bespoke commerce technology, built in Australia.</span>
           </div>
           <div className="flex items-center gap-6">

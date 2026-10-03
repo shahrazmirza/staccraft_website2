@@ -80,8 +80,8 @@ export default function Contact() {
           {/* Info */}
           <aside className="lg:col-span-4 space-y-4">
             <InfoCard icon={<Mail className="w-5 h-5"/>} tag="Email" title="info@staccraft.com.au" href="mailto:info@staccraft.com.au"/>
-            <InfoCard icon={<MapPin className="w-5 h-5"/>} tag="Studio" title="Sydney · Melbourne, Australia"/>
-            <InfoCard icon={<Clock className="w-5 h-5"/>} tag="Hours" title="Mon–Fri · 8:30–17:30 AEST"/>
+            <InfoCard icon={<MapPin className="w-5 h-5"/>} tag="Studio" title="Melbourne, Australia"/>
+            <InfoCard icon={<Clock className="w-5 h-5"/>} tag="Hours" title="Mon–Fri · 9:00–17:00 AEST"/>
             <div className="rounded-2xl bg-[#231F20] text-[#FFFFFF] p-6">
               <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Expect</div>
               <ul className="space-y-2.5 text-sm text-white/80">
