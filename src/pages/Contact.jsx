@@ -38,7 +38,7 @@ export default function Contact() {
       <section className="px-6 md:px-10 pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10">
           {/* Form */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-7">
             {sent ? (
               <div className="bg-[#231F20] text-[#FFFFFF] rounded-3xl p-6 sm:p-10 md:p-14">
                 <div className="w-14 h-14 rounded-full bg-[#B4D234] flex items-center justify-center mb-8">
@@ -70,7 +70,7 @@ export default function Contact() {
                   <label className="text-xs tracking-[0.25em] uppercase text-neutral-600">Tell us about your operation</label>
                   <textarea value={form.message} onChange={e => setForm(f=>({...f, message:e.target.value}))} rows={5} placeholder="Channels you sell through, systems you run, what’s not working today…" className="mt-2 w-full bg-transparent border-b border-black/20 focus:border-[#B4D234] outline-none py-2 resize-none placeholder:text-neutral-400"/>
                 </div>
-                <button type="submit" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-7 py-3.5 rounded-full text-sm transition-colors">
+                <button type="submit" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-7 py-3.5 rounded-full text-sm transition-colors">
                   Book my walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </button>
               </form>
@@ -78,7 +78,7 @@ export default function Contact() {
           </div>
 
           {/* Info */}
-          <aside className="lg:col-span-4 space-y-4">
+          <aside className="lg:col-span-5 space-y-4">
             <InfoCard icon={<Mail className="w-5 h-5"/>} tag="Email" title="info@staccraft.com.au" href="mailto:info@staccraft.com.au"/>
             <InfoCard icon={<MapPin className="w-5 h-5"/>} tag="Studio" title="Melbourne, Australia"/>
             <InfoCard icon={<Clock className="w-5 h-5"/>} tag="Hours" title="Mon–Fri · 9am–5pm AEST"/>

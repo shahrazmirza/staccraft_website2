@@ -36,7 +36,7 @@ export default function ProductDetail() {
               </h1>
               <p className="text-neutral-700 text-lg leading-relaxed mt-8 max-w-2xl">{detail.hero}</p>
               <div className="flex flex-wrap gap-3 mt-8">
-                <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-white px-6 py-3.5 rounded-full text-sm transition-colors">
+                <Link to="/contact" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-white px-6 py-3.5 rounded-full text-sm transition-colors">
                   Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
                 </Link>
                 <Link to="/cases" className="inline-flex items-center gap-2 border border-black/15 hover:border-black/60 px-6 py-3.5 rounded-full text-sm transition-colors">
@@ -94,7 +94,7 @@ export default function ProductDetail() {
             </div>
             <p className="lg:col-span-6 lg:col-start-7 self-end text-white/60 text-lg max-w-xl">Four core flows shaped around how your team actually operates — wired to the same order engine as the rest of the suite.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
             {detail.workflows.map((w, i) => (
               <div key={i} className="relative bg-white/[0.03] border border-white/10 rounded-2xl p-7 hover:bg-white/[0.06] transition-colors">
                 <div className="flex items-center justify-between mb-6">
@@ -152,7 +152,7 @@ export default function ProductDetail() {
           <div className="grid md:grid-cols-3 gap-4">
             {integrations.slice(0, 3).map(i => (
               <div key={i.name} className="bg-white border border-black/10 rounded-2xl p-6">
-                <div className="flex items-baseline justify-between mb-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-3">
                   <div className="font-serif text-2xl">{i.name}</div>
                   <div className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">{i.role}</div>
                 </div>
@@ -196,7 +196,7 @@ export default function ProductDetail() {
       <section className="px-6 md:px-10 pb-20">
         <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#231F20] text-white p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <h3 className="font-serif text-3xl md:text-5xl leading-tight max-w-2xl">See <span className="serif-italic-accent">{product.title}</span> shaped to your operation.</h3>
-          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#B4D234] text-[#231F20] hover:bg-white px-6 py-3.5 rounded-full text-sm transition-colors">
+          <Link to="/contact" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#B4D234] text-[#231F20] hover:bg-white px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
           </Link>
         </div>

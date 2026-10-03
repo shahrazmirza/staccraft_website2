@@ -103,7 +103,7 @@ export default function CaseStudies() {
             <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Have a similar story?</div>
             <h3 className="font-serif text-4xl md:text-5xl leading-tight">Let’s craft yours.</h3>
           </div>
-          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
+          <Link to="/contact" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
           </Link>
         </div>

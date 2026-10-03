@@ -16,7 +16,7 @@ export default function Footer() {
               Tell us how your Australian business runs. We’ll show you the StacCraft platform shaped around it — including the AI assistance that fits your operation.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#B4D234] hover:bg-[#FFFFFF] text-[#231F20] px-6 py-3.5 rounded-full transition-colors">
+              <Link to="/contact" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#B4D234] hover:bg-[#FFFFFF] text-[#231F20] px-6 py-3.5 rounded-full transition-colors">
                 Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
               </Link>
               <a href="mailto:info@staccraft.com.au" className="inline-flex items-center gap-2 border border-white/20 hover:border-white/60 px-6 py-3.5 rounded-full transition-colors">

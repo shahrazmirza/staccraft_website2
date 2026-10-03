@@ -42,7 +42,7 @@ export default function Home() {
                 StacCraft builds an integrated commerce suite — storefront, teamwear marketplace, B2B, procurement and practical AI — configured to fit how Australian businesses actually run.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/products" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
+                <Link to="/products" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
                   Explore the platform <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </Link>
                 <Link to="/contact" className="inline-flex items-center gap-2 border border-black/15 hover:border-black/60 px-6 py-3.5 rounded-full text-sm transition-colors">

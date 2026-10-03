@@ -68,7 +68,7 @@ export default function About() {
             </div>
             <p className="lg:col-span-6 lg:col-start-7 self-end text-white/60 text-lg">A clear, four-stage process — so you always know what’s happening and why.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
             {process.map((s, i) => {
               const Icon = s.icon;
               return (
@@ -91,7 +91,7 @@ export default function About() {
       <section className="px-6 md:px-10 py-20">
         <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <h3 className="font-serif text-4xl md:text-5xl leading-tight">Talk to the team that <span className="serif-italic-accent">builds</span> it.</h3>
-          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
+          <Link to="/contact" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
           </Link>
         </div>

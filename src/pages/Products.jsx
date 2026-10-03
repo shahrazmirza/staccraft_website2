@@ -87,7 +87,7 @@ export default function Products() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <Link to={`/products/${current.id}`} className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-white px-6 py-3.5 rounded-full text-sm transition-colors">
+                <Link to={`/products/${current.id}`} className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-white px-6 py-3.5 rounded-full text-sm transition-colors">
                   Explore {current.title} <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </Link>
                 <Link to="/contact" className="inline-flex items-center gap-2 border border-black/15 hover:border-black/60 px-6 py-3.5 rounded-full text-sm transition-colors">
