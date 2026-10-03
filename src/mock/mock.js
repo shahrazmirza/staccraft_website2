@@ -104,15 +104,15 @@ export const productDetails = {
     related: ['procurement', 'teamwear']
   },
   ai: {
-    hero: 'Practical AI built into the suite \u2014 assistants, automation and insight shaped around your catalogues, orders and workflows, not a generic chatbot bolted on.',
+    hero: 'Practical AI built into the suite — assistants, automation and insight shaped around your catalogues, orders and workflows, not a generic chatbot bolted on.',
     tagline: 'AI that knows your operation.',
     screenshots: [
-      { src: `${S}/kookaburra-admin-dashboard.png`, caption: 'AI assistance surfaces the numbers to act on \u2014 not just another dashboard' }
+      { src: `${S}/kookaburra-admin-dashboard.png`, caption: 'AI assistance surfaces the numbers to act on — not just another dashboard' }
     ],
     workflows: [
       { title: 'Copilots', desc: 'Assistants that know your catalogue, orders and club data.' },
       { title: 'Automation', desc: 'Merchandising, support and ops tasks handled with human review.' },
-      { title: 'Insights', desc: 'What to act on today \u2014 not another dashboard to interpret.' },
+      { title: 'Insights', desc: 'What to act on today — not another dashboard to interpret.' },
       { title: 'Guardrails', desc: 'Role-scoped access, audit logs and human-in-the-loop by default.' }
     ],
     groups: [
@@ -124,10 +124,9 @@ export const productDetails = {
   }
 };
 
-export const clients = [
-  'Kookaburra Sport', 'Hockey Australia', 'Fremantle Dockers', 'North Melbourne',
-  'Cricket NSW', 'Melbourne Storm', 'Western Bulldogs', 'Rugby Australia'
-];
+// Client logos for the home-page marquee. Empty until approved logos are supplied \u2014
+// the marquee shows placeholder slots meanwhile. Add entries as { name, logo }.
+export const clientLogos = [];
 
 export const products = [
   {
@@ -200,7 +199,7 @@ export const products = [
     icon: Sparkles,
     tag: '06',
     title: 'AI Assistance',
-    lead: 'Practical AI built into the suite \u2014 assistants, automation and insight shaped around your catalogues, orders and workflows, not a generic chatbot bolted on.',
+    lead: 'Practical AI built into the suite — assistants, automation and insight shaped around your catalogues, orders and workflows, not a generic chatbot bolted on.',
     bullets: [
       'Assistants that know your catalogue, orders and club data',
       'Automation for merchandising, support and ops tasks',
@@ -213,32 +212,31 @@ export const products = [
 export const integrations = [
   { name: 'Sage', role: 'Finance & ERP', desc: 'Orders, invoices and stock levels flow straight into your books.' },
   { name: 'HIVO', role: 'Digital assets', desc: 'Product imagery and brand assets stay in sync across every store.' },
-  { name: 'Monday.com', role: 'Work & ops', desc: 'Turn orders and approvals into trackable work automatically.' },
-  { name: 'Xero', role: 'Accounting', desc: 'Invoice sync, reconciliation and tax handling wired to every order.' },
-  { name: 'Shopify', role: 'Storefront', desc: 'Headless bridge for teams already running Shopify assets.' },
-  { name: 'Klaviyo', role: 'Marketing', desc: 'Customer segments and lifecycle flows fed by your order data.' }
+  { name: 'Monday.com', role: 'Work & ops', desc: 'Turn orders and approvals into trackable work automatically.' }
 ];
 
 export const process = [
   { icon: Compass, tag: '01', title: 'Discover', desc: 'We map how your business actually sells, prices, fulfils and reports \u2014 so nothing gets designed against assumptions.' },
-  { icon: PenTool, tag: '02', title: 'Design', desc: 'We architect the platform around what we found \u2014 choosing which products, integrations, AI assistance and workflows you actually need, not a fixed template.' },
-  { icon: Hammer, tag: '03', title: 'Build', desc: 'We build and configure the suite, connect it to your existing tools, layer in AI assistance, and test it against how your team really works.' },
+  { icon: PenTool, tag: '02', title: 'Design', desc: 'We architect the solution around what we found \u2014 choosing which products, integrations, AI assistance and workflows you actually need, not a fixed template.' },
+  { icon: Hammer, tag: '03', title: 'Build', desc: 'We build and configure it, connect it to your existing tools, layer in AI assistance, and test it against how your team really works.' },
   { icon: LifeBuoy, tag: '04', title: 'Support', desc: 'You launch with a team that already knows your business \u2014 ongoing support, training and room to extend as you grow.' }
 ];
 
 export const principles = [
   { tag: '01', title: 'Built around your operation', desc: 'We map how you actually sell, price and fulfil \u2014 then shape the platform to it, instead of handing you a rigid template to work around.' },
-  { tag: '02', title: 'End-to-end solution', desc: 'From storefront to procurement to AI assistance, every part of your operation runs through one connected system \u2014 no stitching disconnected tools together.' },
-  { tag: '03', title: 'Plugs into your stack', desc: 'We connect to the tools you already run \u2014 from finance and ERP to fulfilment ops \u2014 so commerce isn\u2019t a separate system to manage.' },
+  { tag: '02', title: 'One integrated suite', desc: 'Storefront, teamwear, B2B, procurement, reporting and AI assistance share one order engine and one source of truth \u2014 no stitching disconnected tools together.' },
+  { tag: '03', title: 'Plugs into your stack', desc: 'Sage, HIVO and Monday.com connect out of the box, so commerce lives inside the tools your team already runs on.' },
   { tag: '04', title: 'Proven, then extended', desc: 'You start on a mature, battle-tested product suite \u2014 and extend it as you grow, without re-platforming or throwing work away.' },
-  { tag: '05', title: 'AI that knows your operation', desc: 'Assistants and automation are shaped around how you sell, fulfil and support \u2014 not a generic chatbot dropped onto the storefront.' }
+  { tag: '05', title: 'AI that knows your operation', desc: 'Assistants and automation are shaped around how you sell, fulfil and support — not a generic chatbot dropped onto the storefront.' }
 ];
 
+// `placeholder: true` marks a slot still waiting on a real, verified figure \u2014
+// it renders as a clearly-marked empty slot rather than a claim.
 export const stats = [
-  { value: '6', label: 'Modules on one order engine, customer record and admin', note: 'The suite' },
+  { value: '6', label: 'Products on one order engine, customer record and admin', note: 'The suite' },
   { value: '4', label: 'Connected systems running Kookaburra Sport', note: 'Flagship build' },
-  { value: '24', label: 'Report views built into the admin portal', note: 'Analytics' },
-  { value: '<1hr', label: 'To launch a new club store on Teamwear', note: 'Club onboarding' }
+  { value: 'XXX+', label: 'Clubs & brands live on StacCraft', note: 'Awaiting figure', placeholder: true },
+  { value: 'XXd', label: 'Typical time to first store live', note: 'Awaiting figure', placeholder: true }
 ];
 
 export const caseStudy = {
@@ -310,11 +308,9 @@ export const caseModules = [
   }
 ];
 
-export const testimonial = {
-  quote: 'What we needed wasn\u2019t another off-the-shelf store. It was a platform shaped around how the business actually runs \u2014 clubs, consumers and trade on one stack \u2014 and that\u2019s what StacCraft delivered.',
-  author: 'Operations lead',
-  role: 'Kookaburra Sport'
-};
+// Set to { quote, author, role } once a client has approved a quote for publication.
+// While null, the home page shows a clearly-marked placeholder slot.
+export const testimonial = null;
 
 export const heroImages = {
   main: '/assets/photo-1783945339973-1e65ec4047d2.jpg',

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, Play, Star, Circle } from 'lucide-react';
-import { clients, products, integrations, stats, testimonial, heroImages } from '../mock/mock';
+import { ArrowUpRight, Play, Circle, Sparkles } from 'lucide-react';
+import { clientLogos, products, integrations, stats, testimonial, heroImages } from '../mock/mock';
 
-const rotators = ['Tailored.', 'Integrated.', 'Yours.', 'Australian.'];
+const rotators = ['Tailored.', 'Integrated.', 'Proven.', 'Yours.'];
+// Widths for the grey logo placeholder bars shown until real client logos are supplied.
+const logoSlots = [104, 88, 120, 78, 100, 92, 110];
 
 export default function Home() {
   const [idx, setIdx] = useState(0);
@@ -39,7 +41,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-4 space-y-6 fade-up">
               <p className="text-neutral-700 text-lg leading-relaxed max-w-md">
-                StacCraft builds an integrated commerce suite — storefront, teamwear marketplace, B2B, procurement and practical AI — configured to fit how Australian businesses actually run.
+                <span className="text-[#231F20] font-medium">Bespoke by design.</span> StacCraft builds technology around how your business actually runs — led by an integrated commerce suite: storefront, teamwear marketplace, B2B, procurement, reporting and practical AI.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/products" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
@@ -89,20 +91,22 @@ export default function Home() {
 
       {/* MARQUEE */}
       <section className="py-12 border-y border-black/10 overflow-hidden bg-[#F1EFE6]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-8 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-8">
           <div className="text-xs tracking-[0.3em] uppercase text-neutral-500">/ Trusted by teams across Australia</div>
-          <div className="hidden md:flex items-center gap-1 text-neutral-500 text-sm">
-            {[...Array(5)].map((_,i)=><Star key={i} className="w-3.5 h-3.5 fill-[#B4D234] text-[#B4D234]"/>)}
-            <span className="ml-2">Operators’ favourite</span>
-          </div>
         </div>
-        <div className="flex marquee whitespace-nowrap">
-          {[...clients, ...clients].map((c, i) => (
-            <div key={i} className="flex items-center gap-14 px-8">
-              <span className="font-serif text-3xl md:text-5xl text-neutral-800">{c}</span>
-              <span className="w-2 h-2 rounded-full bg-[#B4D234]"/>
-            </div>
-          ))}
+        {/* The list is rendered twice so the -50% marquee loop is seamless. */}
+        <div className="flex marquee whitespace-nowrap w-max">
+          {clientLogos.length > 0
+            ? [...clientLogos, ...clientLogos].map((c, i) => (
+                <div key={i} className="flex items-center px-8 md:px-12">
+                  <img src={c.logo} alt={c.name} className="h-8 md:h-10 w-auto opacity-70" />
+                </div>
+              ))
+            : [...logoSlots, ...logoSlots].map((w, i) => (
+                <div key={i} className="flex items-center px-6 md:px-8" aria-hidden="true">
+                  <span className="block h-5 rounded bg-black/10" style={{ width: w }} />
+                </div>
+              ))}
         </div>
       </section>
 
@@ -112,13 +116,14 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-8 mb-16">
             <div className="lg:col-span-4">
               <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-4">/ What we offer</div>
+              <p className="text-sm text-neutral-600 leading-relaxed max-w-xs">Bespoke technology is what we do. Our commerce suite is where it’s most proven.</p>
             </div>
             <div className="lg:col-span-8">
               <h2 className="font-serif text-4xl md:text-6xl leading-[1] tracking-tight">
                 One suite, <span className="serif-italic-accent">shaped</span> to your business.
               </h2>
               <p className="text-neutral-600 mt-6 text-lg max-w-2xl">
-                A proven product suite that shares one order engine, one customer record and one admin — including practical AI assistance — then gets configured and extended to fit your operation.
+                Six proven products that share one order engine, one customer record and one admin — including practical AI assistance — then get configured and extended to fit your operation. Start with what you need; add the rest without re-platforming.
               </p>
             </div>
           </div>
@@ -158,10 +163,10 @@ export default function Home() {
               </h2>
             </div>
             <div className="lg:col-span-6 lg:col-start-7 self-end">
-              <p className="text-white/60 text-lg max-w-md">Commerce shouldn’t be an island. StacCraft connects directly to the systems your team already relies on — finance, DAM, ops and beyond.</p>
+              <p className="text-white/60 text-lg max-w-md">Commerce shouldn’t be an island. StacCraft connects directly to the systems your team already relies on — finance, digital assets and operations.</p>
             </div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+          <div className="grid md:grid-cols-3 gap-px bg-white/10">
             {integrations.map((i) => (
               <div key={i.name} className="bg-[#231F20] py-6 md:p-8 hover:bg-[#1c1c1c] transition-colors">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-4 md:mb-6">
@@ -181,9 +186,9 @@ export default function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-6">
             {stats.map((s, i) => (
               <div key={i} className="border-t border-black/20 pt-6">
-                <div className="font-serif text-5xl md:text-7xl leading-none tracking-tight">{s.value}</div>
+                <div className={`font-serif text-5xl md:text-7xl leading-none tracking-tight ${s.placeholder ? 'text-neutral-300' : ''}`}>{s.value}</div>
                 <div className="mt-4 md:mt-6 text-sm text-neutral-700 max-w-[220px]">{s.label}</div>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mt-2">// {s.note}</div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mt-2">{s.placeholder ? `[${s.note}]` : `// ${s.note}`}</div>
               </div>
             ))}
           </div>
@@ -194,10 +199,19 @@ export default function Home() {
       <section className="py-16 md:py-24 px-6 md:px-10 bg-[#F1EFE6]">
         <div className="max-w-[1100px] mx-auto text-center">
           <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">/ Testimonial</div>
-          <blockquote className="font-serif text-2xl sm:text-3xl md:text-5xl leading-[1.15] tracking-tight text-neutral-900">
-            “{testimonial.quote.replace(/“|”/g,'')}”
-          </blockquote>
-          <div className="mt-8 text-sm text-neutral-600">— {testimonial.author}, {testimonial.role}</div>
+          {testimonial ? (
+            <>
+              <blockquote className="font-serif text-2xl sm:text-3xl md:text-5xl leading-[1.15] tracking-tight text-neutral-900">
+                “{testimonial.quote.replace(/“|”/g,'')}”
+              </blockquote>
+              <div className="mt-8 text-sm text-neutral-600">— {testimonial.author}, {testimonial.role}</div>
+            </>
+          ) : (
+            <div className="border border-dashed border-black/20 rounded-2xl px-6 py-12 md:py-16">
+              <div className="font-mono text-sm md:text-base text-neutral-400">[ Client testimonial — awaiting an approved quote ]</div>
+              <div className="mt-4 font-mono text-xs text-neutral-400">[ Name, role, company ]</div>
+            </div>
+          )}
         </div>
       </section>
     </div>
