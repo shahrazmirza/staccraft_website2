@@ -42,7 +42,7 @@ export default function Contact() {
             {sent ? (
               <div className="bg-[#231F20] text-[#FFFFFF] rounded-3xl p-10 md:p-14">
                 <div className="w-14 h-14 rounded-full bg-[#B4D234] flex items-center justify-center mb-8">
-                  <Check className="w-6 h-6 text-white"/>
+                  <Check className="w-6 h-6 text-[#231F20]"/>
                 </div>
                 <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-4">Message received.</h2>
                 <p className="text-white/70 leading-relaxed max-w-lg">Thanks {form.name.split(' ')[0] || 'there'} — a StacCraft strategist will reach out within one business day with an agenda and a proposed time for your walkthrough.</p>
@@ -70,7 +70,7 @@ export default function Contact() {
                   <label className="text-xs tracking-[0.25em] uppercase text-neutral-600">Tell us about your operation</label>
                   <textarea value={form.message} onChange={e => setForm(f=>({...f, message:e.target.value}))} rows={5} placeholder="Channels you sell through, systems you run, what’s not working today…" className="mt-2 w-full bg-transparent border-b border-black/20 focus:border-[#B4D234] outline-none py-2 resize-none placeholder:text-neutral-400"/>
                 </div>
-                <button type="submit" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] text-[#FFFFFF] px-7 py-3.5 rounded-full text-sm transition-colors">
+                <button type="submit" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-7 py-3.5 rounded-full text-sm transition-colors">
                   Book my walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </button>
               </form>

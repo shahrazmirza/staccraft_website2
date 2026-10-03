@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { products } from '../mock/mock';
 
 export default function Products() {
   const [active, setActive] = useState(products[0].id);
+  const panelRef = useRef(null);
+  // Below lg the panel sits under the list, so bring it into view on select.
+  const select = (id) => {
+    setActive(id);
+    if (window.innerWidth < 1024) {
+      requestAnimationFrame(() => panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    }
+  };
   const current = products.find(p => p.id === active);
   const Icon = current.icon;
 
@@ -33,9 +41,9 @@ export default function Products() {
               const IIcon = p.icon;
               const isActive = active === p.id;
               return (
-                <button key={p.id} onClick={() => setActive(p.id)} className={`w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl border transition-all ${isActive ? 'bg-[#231F20] text-[#FFFFFF] border-[#231F20]' : 'bg-white/50 border-black/10 hover:border-black/40'}`}>
+                <button key={p.id} onClick={() => select(p.id)} className={`w-full text-left flex items-center gap-4 px-4 py-4 rounded-xl border transition-all ${isActive ? 'bg-[#231F20] text-[#FFFFFF] border-[#231F20]' : 'bg-white/50 border-black/10 hover:border-black/40'}`}>
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isActive ? 'bg-[#B4D234]' : 'bg-black/5'}`}>
-                    <IIcon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-neutral-800'}`}/>
+                    <IIcon className={`w-5 h-5 ${isActive ? 'text-[#231F20]' : 'text-neutral-800'}`}/>
                   </div>
                   <div className="flex-1">
                     <div className="text-[10px] font-mono tracking-widest opacity-60">{p.tag}</div>
@@ -47,7 +55,7 @@ export default function Products() {
             })}
           </aside>
 
-          <div className="lg:col-span-8">
+          <div ref={panelRef} className="lg:col-span-8 scroll-mt-24">
             <div key={current.id} className="fade-up bg-[#F1EFE6] rounded-3xl p-8 md:p-12 border border-black/5">
               <div className="flex items-center justify-between mb-8">
                 <div className="w-16 h-16 rounded-full bg-[#231F20] flex items-center justify-center">
@@ -80,7 +88,7 @@ export default function Products() {
 
               <div className="flex flex-wrap gap-3">
                 <Link to={`/products/${current.id}`} className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-white px-6 py-3.5 rounded-full text-sm transition-colors">
-                  Open {current.title.toLowerCase()} page <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
+                  Explore {current.title} <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </Link>
                 <Link to="/contact" className="inline-flex items-center gap-2 border border-black/15 hover:border-black/60 px-6 py-3.5 rounded-full text-sm transition-colors">
                   Book a walkthrough

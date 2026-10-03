@@ -64,19 +64,19 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* SCREENSHOTS */}
+      {/* SCREENSHOTS — capped near their native 1024px width so they stay sharp */}
       <section className="px-6 md:px-10 py-12">
-        <div className="max-w-[1400px] mx-auto space-y-8">
+        <div className={`mx-auto grid gap-6 lg:gap-8 items-start ${detail.screenshots.length > 1 ? 'max-w-[1400px] md:grid-cols-2' : 'max-w-[1080px]'}`}>
           {detail.screenshots.map((s, i) => (
-            <figure key={i} className="rounded-3xl overflow-hidden border border-black/10 bg-white">
+            <figure key={i} className="rounded-2xl overflow-hidden border border-black/10 bg-white shadow-[0_24px_60px_-30px_rgba(0,0,0,0.25)]">
               <div className="flex items-center gap-2 px-4 py-3 border-b border-black/5 bg-[#F1EFE6]">
                 <span className="w-2.5 h-2.5 rounded-full bg-black/15"/>
                 <span className="w-2.5 h-2.5 rounded-full bg-black/15"/>
                 <span className="w-2.5 h-2.5 rounded-full bg-black/15"/>
-                <span className="ml-4 text-xs font-mono text-neutral-500 truncate">{product.title.toLowerCase()}.staccraft.com.au</span>
+                <span className="ml-4 text-[11px] font-mono uppercase tracking-widest text-neutral-500 truncate">{product.title}</span>
               </div>
               <img src={s.src} alt={s.caption} className="w-full h-auto block" loading="lazy" />
-              <figcaption className="px-6 py-4 text-sm text-neutral-600 border-t border-black/5">{s.caption}</figcaption>
+              <figcaption className="px-5 py-4 text-sm text-neutral-600 border-t border-black/5">{s.caption}</figcaption>
             </figure>
           ))}
         </div>
@@ -89,10 +89,10 @@ export default function ProductDetail() {
             <div className="lg:col-span-5">
               <div className="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-4">/ Workflows</div>
               <h2 className="font-serif text-4xl md:text-6xl leading-[1] tracking-tight">
-                How <span className="serif-italic-accent">{product.title.toLowerCase()}</span> runs.
+                How <span className="serif-italic-accent">{product.title}</span> runs.
               </h2>
             </div>
-            <p className="lg:col-span-6 lg:col-start-7 self-end text-white/60 text-lg">Four core flows shaped around how your team actually operates — wired to the same order engine as the rest of the suite.</p>
+            <p className="lg:col-span-6 lg:col-start-7 self-end text-white/60 text-lg max-w-xl">Four core flows shaped around how your team actually operates — wired to the same order engine as the rest of the suite.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {detail.workflows.map((w, i) => (
@@ -147,7 +147,7 @@ export default function ProductDetail() {
               <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Plays well with</div>
               <h3 className="font-serif text-3xl md:text-4xl leading-tight">Wired into the tools you already run.</h3>
             </div>
-            <Link to="/contact" className="inline-flex items-center gap-2 text-sm link-hover">See all integrations <ArrowUpRight className="w-4 h-4"/></Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 text-sm link-hover">Ask about your stack <ArrowUpRight className="w-4 h-4"/></Link>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {integrations.slice(0, 3).map(i => (
@@ -195,7 +195,7 @@ export default function ProductDetail() {
       {/* CTA */}
       <section className="px-6 md:px-10 pb-20">
         <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#231F20] text-white p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <h3 className="font-serif text-3xl md:text-5xl leading-tight max-w-2xl">See <span className="serif-italic-accent">{product.title.toLowerCase()}</span> shaped to your operation.</h3>
+          <h3 className="font-serif text-3xl md:text-5xl leading-tight max-w-2xl">See <span className="serif-italic-accent">{product.title}</span> shaped to your operation.</h3>
           <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#B4D234] text-[#231F20] hover:bg-white px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
           </Link>

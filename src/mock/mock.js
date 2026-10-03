@@ -235,10 +235,10 @@ export const principles = [
 ];
 
 export const stats = [
-  { value: '$XXM', label: 'GMV processed through the platform', note: 'placeholder' },
-  { value: 'XXX+', label: 'Clubs & brands live on StacCraft', note: 'placeholder' },
-  { value: '99.9%', label: 'Platform uptime', note: 'placeholder' },
-  { value: 'XXd', label: 'Typical time to first store live', note: 'placeholder' }
+  { value: '6', label: 'Modules on one order engine, customer record and admin', note: 'The suite' },
+  { value: '4', label: 'Connected systems running Kookaburra Sport', note: 'Flagship build' },
+  { value: '24', label: 'Report views built into the admin portal', note: 'Analytics' },
+  { value: '<1hr', label: 'To launch a new club store on Teamwear', note: 'Club onboarding' }
 ];
 
 export const caseStudy = {
@@ -264,7 +264,7 @@ export const caseModules = [
       'Locker Room \u2014 kit builder, saved size profile and season order history per player'
     ],
     chips: ['Find Your Club', 'Kit builder', 'Size profile', 'Jersey personalisation', 'Season history'],
-    image: '/assets/photo-1600364769293-40c659a6c3c0.jpg'
+    image: '/assets/kookaburra-teamwear-clubs.png'
   },
   {
     tag: 'B2C',
@@ -278,7 +278,7 @@ export const caseModules = [
       'Self-serve order tracking and return requests after purchase'
     ],
     chips: ['Reviews', 'Wishlist', 'Volume discounts', 'Order tracking', 'Returns', 'Size guides'],
-    image: '/assets/photo-1441984904996-e0b6ba687e04.jpg'
+    image: '/assets/kookaburra-b2c-hockey-australia.jpg'
   },
   {
     tag: 'B2B',
@@ -292,7 +292,7 @@ export const caseModules = [
       'Approval workflow and invoice checkout against account payment terms'
     ],
     chips: ['Quick order', 'Size matrix', 'Excel import', 'Order templates', 'Approvals', 'Credit limit'],
-    image: '/assets/photo-1607123130585-485f5375a79a.jpg'
+    image: '/assets/kookaburra-b2b.png'
   },
   {
     tag: 'Analytics',
@@ -306,7 +306,7 @@ export const caseModules = [
       'Every report exportable to Excel or PDF for finance and ops'
     ],
     chips: ['Revenue by club', 'Order drill-down', 'Low stock alerts', 'Excel + PDF export', 'Role-based access'],
-    image: '/assets/photo-1483985988355-763728e1935b.jpg'
+    image: '/assets/kookaburra-admin-dashboard.png'
   }
 ];
 

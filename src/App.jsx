@@ -10,10 +10,24 @@ import CaseStudies from './pages/CaseStudies';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import { Toaster } from './components/ui/toaster';
+import { products } from './mock/mock';
+
+const titles = {
+  '/': 'StacCraft — Bespoke commerce technology, built in Australia',
+  '/products': 'Products — StacCraft',
+  '/cases': 'Case Studies — StacCraft',
+  '/about': 'About — StacCraft',
+  '/contact': 'Contact — StacCraft',
+};
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  React.useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    const product = pathname.match(/^\/products\/(.+)/)?.[1];
+    const name = product && products.find(p => p.id === product)?.title;
+    document.title = name ? `${name} — StacCraft` : (titles[pathname] || 'StacCraft');
+  }, [pathname]);
   return null;
 }
 

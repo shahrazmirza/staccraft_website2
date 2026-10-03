@@ -38,7 +38,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center gap-3">
           <a href="#" className="text-sm text-neutral-700 link-hover">Sign in</a>
-          <Link to="/contact" className="group inline-flex items-center gap-1.5 bg-[#231F20] hover:bg-[#B4D234] text-[#FFFFFF] text-sm px-4 py-2.5 rounded-full transition-colors">
+          <Link to="/contact" className="group inline-flex items-center gap-1.5 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] text-sm px-4 py-2.5 rounded-full transition-colors">
             Book a walkthrough
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
           </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
           {links.map(l => (
             <NavLink key={l.to} to={l.to} end={l.to==='/'} className={({isActive}) => `block px-3 py-2.5 rounded-lg text-base ${isActive ? 'bg-[#231F20] text-[#FFFFFF]' : 'text-neutral-800 hover:bg-black/5'}`}>{l.label}</NavLink>
           ))}
-          <Link to="/contact" className="mt-3 flex items-center justify-center gap-2 bg-[#B4D234] text-[#FFFFFF] px-4 py-3 rounded-full text-sm">Book a walkthrough <ArrowUpRight className="w-4 h-4" /></Link>
+          <Link to="/contact" className="mt-3 flex items-center justify-center gap-2 bg-[#B4D234] text-[#231F20] px-4 py-3 rounded-full text-sm">Book a walkthrough <ArrowUpRight className="w-4 h-4" /></Link>
         </div>
       )}
     </header>

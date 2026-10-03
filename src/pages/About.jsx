@@ -75,7 +75,7 @@ export default function About() {
                 <div key={i} className="relative bg-white/[0.03] border border-white/10 rounded-2xl p-7 hover:bg-white/[0.06] transition-colors">
                   <div className="flex items-center justify-between mb-8">
                     <div className="w-11 h-11 rounded-full bg-[#B4D234] flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-white"/>
+                      <Icon className="w-5 h-5 text-[#231F20]"/>
                     </div>
                     <span className="font-mono text-xs text-white/40">{s.tag}</span>
                   </div>
@@ -91,7 +91,7 @@ export default function About() {
       <section className="px-6 md:px-10 py-20">
         <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <h3 className="font-serif text-4xl md:text-5xl leading-tight">Talk to the team that <span className="serif-italic-accent">builds</span> it.</h3>
-          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
+          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
           </Link>
         </div>

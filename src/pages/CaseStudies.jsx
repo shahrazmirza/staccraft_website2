@@ -23,15 +23,15 @@ export default function CaseStudies() {
       {/* Flagship */}
       <section className="px-6 md:px-10 mb-24">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 lg:items-center">
             <div className="lg:col-span-7 relative rounded-3xl overflow-hidden aspect-[4/3] group">
-              <img src={caseStudy.image} alt="Kookaburra" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+              <img src={caseStudy.image} alt="Kookaburra Sport" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
               <div className="absolute top-6 left-6 flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-widest bg-[#B4D234] text-white">Flagship</span>
+                <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-widest bg-[#B4D234] text-[#231F20]">Flagship</span>
                 <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-widest bg-white/90 text-[#231F20]">Bespoke stack</span>
               </div>
-              <div className="absolute bottom-6 left-6 text-white">
+              <div className="absolute bottom-6 left-6 right-6 text-white">
                 <div className="font-serif text-4xl md:text-5xl leading-tight">{caseStudy.title}</div>
                 <div className="text-white/80 text-sm mt-1">{caseStudy.subtitle}</div>
               </div>
@@ -62,13 +62,18 @@ export default function CaseStudies() {
 
       {/* Modules */}
       <section className="px-6 md:px-10 mb-24">
-        <div className="max-w-[1400px] mx-auto space-y-24">
+        <div className="max-w-[1400px] mx-auto space-y-20 lg:space-y-28">
           {caseModules.map((m, i) => (
-            <div key={i} className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 ? 'lg:[direction:rtl]' : ''}`}>
-              <div className="lg:col-span-7 relative rounded-3xl overflow-hidden aspect-[16/10] group [direction:ltr]">
-                <img src={m.image} alt={m.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
-                <div className="absolute top-5 left-5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-widest bg-[#FFFFFF] text-[#231F20]">Kookaburra · {m.tag}</div>
-              </div>
+            <div key={i} className={`grid lg:grid-cols-12 gap-8 lg:gap-12 items-center ${i % 2 ? 'lg:[direction:rtl]' : ''}`}>
+              <figure className="lg:col-span-7 rounded-2xl overflow-hidden border border-black/10 bg-white shadow-[0_24px_60px_-30px_rgba(0,0,0,0.25)] [direction:ltr]">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-black/5 bg-[#F1EFE6]">
+                  <span className="w-2.5 h-2.5 rounded-full bg-black/15"/>
+                  <span className="w-2.5 h-2.5 rounded-full bg-black/15"/>
+                  <span className="w-2.5 h-2.5 rounded-full bg-black/15"/>
+                  <span className="ml-4 text-[11px] font-mono uppercase tracking-widest text-neutral-500 truncate">Kookaburra · {m.tag}</span>
+                </div>
+                <img src={m.image} alt={`${m.title} — Kookaburra`} className="block w-full h-auto" loading="lazy"/>
+              </figure>
               <div className="lg:col-span-5 [direction:ltr]">
                 <h3 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight mb-3">{m.title}</h3>
                 <div className="text-sm text-neutral-500 mb-5">{m.sub}</div>
@@ -98,7 +103,7 @@ export default function CaseStudies() {
             <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Have a similar story?</div>
             <h3 className="font-serif text-4xl md:text-5xl leading-tight">Let’s craft yours.</h3>
           </div>
-          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
+          <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
           </Link>
         </div>

@@ -24,7 +24,7 @@ export default function Home() {
                 <Circle className="w-2 h-2 fill-[#B4D234] text-[#B4D234]" />
                 <span className="text-xs tracking-widest uppercase text-neutral-700">Bespoke technology, built in Australia</span>
               </div>
-              <h1 className="font-serif text-[64px] leading-[0.95] md:text-[104px] tracking-[-0.03em] font-medium">
+              <h1 className="font-serif text-[48px] leading-[0.95] sm:text-[72px] md:text-[104px] tracking-[-0.03em] font-medium">
                 Commerce that <span className="serif-italic-accent">fits</span>
                 <br />
                 <span className="inline-flex items-baseline gap-3">
@@ -42,7 +42,7 @@ export default function Home() {
                 StacCraft builds an integrated commerce suite — storefront, teamwear marketplace, B2B, procurement and practical AI — configured to fit how Australian businesses actually run.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/products" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
+                <Link to="/products" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
                   Explore the platform <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </Link>
                 <Link to="/contact" className="inline-flex items-center gap-2 border border-black/15 hover:border-black/60 px-6 py-3.5 rounded-full text-sm transition-colors">
@@ -53,24 +53,31 @@ export default function Home() {
           </div>
 
           {/* Hero image collage */}
-          <div className="grid grid-cols-12 gap-4 mt-20">
-            <div className="col-span-12 md:col-span-8 relative rounded-2xl overflow-hidden aspect-[16/9] group">
-              <img src={heroImages.main} alt="Studio at work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"/>
-              <div className="absolute bottom-6 left-6 text-white">
-                <div className="text-[10px] tracking-[0.3em] uppercase text-white/70">// Featured build</div>
-                <div className="font-serif text-3xl md:text-4xl mt-1">Kookaburra Sport — four connected systems</div>
+          {/* Images are absolutely positioned so their natural size never drives the
+              layout — the main tile sets the height and the side column matches it. */}
+          <div className="grid grid-cols-12 gap-4 mt-16 md:mt-20">
+            <Link to="/cases" className="col-span-12 md:col-span-8 relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/9] group">
+              <img src={heroImages.main} alt="Kit racks ready for distribution" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"/>
+              <div className="absolute bottom-5 left-5 right-5 md:bottom-8 md:left-8 md:right-8 flex items-end justify-between gap-4 text-white">
+                <div>
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-white/70">// Featured build</div>
+                  <div className="font-serif text-2xl sm:text-3xl md:text-4xl leading-tight mt-1">Kookaburra Sport — four connected systems</div>
+                </div>
+                <span className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-white/15 backdrop-blur border border-white/30 items-center justify-center transition-colors group-hover:bg-[#B4D234] group-hover:border-[#B4D234] group-hover:text-[#231F20]">
+                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:rotate-45"/>
+                </span>
               </div>
-            </div>
-            <div className="col-span-6 md:col-span-4 grid grid-rows-2 gap-4">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img src={heroImages.side} alt="Retail" className="w-full h-full object-cover" loading="lazy"/>
+            </Link>
+            <div className="col-span-12 md:col-span-4 grid grid-cols-2 md:grid-cols-1 md:grid-rows-2 gap-4">
+              <div className="relative rounded-2xl overflow-hidden aspect-square md:aspect-auto">
+                <img src={heroImages.side} alt="Personalised team jersey" className="absolute inset-0 w-full h-full object-cover object-center" />
               </div>
-              <div className="relative rounded-2xl overflow-hidden bg-[#231F20] text-[#FFFFFF] p-6 flex flex-col justify-between">
+              <div className="relative rounded-2xl overflow-hidden bg-[#231F20] text-[#FFFFFF] p-5 md:p-7 flex flex-col justify-between aspect-square md:aspect-auto">
                 <Sparkles className="w-6 h-6 text-[#B4D234]"/>
                 <div>
                   <div className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-2">// AI native</div>
-                  <div className="font-serif text-2xl leading-tight">Assistants shaped around <em className="font-serif italic text-[#B4D234] not-italic">your</em> catalogue.</div>
+                  <div className="font-serif text-lg sm:text-2xl leading-tight">Assistants shaped around <em className="font-serif italic text-[#B4D234]">your</em> catalogue.</div>
                 </div>
               </div>
             </div>
@@ -121,7 +128,7 @@ export default function Home() {
                 <Link to={`/products/${p.id}`} key={p.id} className="group relative bg-white/50 hover:bg-[#231F20] border border-black/10 hover:border-[#231F20] rounded-2xl p-7 transition-all duration-300 overflow-hidden">
                   <div className="flex items-center justify-between mb-8">
                     <div className="w-11 h-11 rounded-full border border-black/20 group-hover:border-[#B4D234] group-hover:bg-[#B4D234] flex items-center justify-center transition-colors">
-                      <Icon className="w-5 h-5 text-neutral-800 group-hover:text-white transition-colors"/>
+                      <Icon className="w-5 h-5 text-neutral-800 group-hover:text-[#231F20] transition-colors"/>
                     </div>
                     <span className="font-mono text-xs text-neutral-400 group-hover:text-white/40 transition-colors">{p.tag}</span>
                   </div>
@@ -174,7 +181,7 @@ export default function Home() {
               <div key={i} className="border-t border-black/20 pt-6">
                 <div className="font-serif text-6xl md:text-7xl leading-none tracking-tight">{s.value}</div>
                 <div className="mt-6 text-sm text-neutral-700 max-w-[220px]">{s.label}</div>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mt-2">[{s.note}]</div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mt-2">// {s.note}</div>
               </div>
             ))}
           </div>

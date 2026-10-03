@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight, MapPin, Mail } from 'lucide-react';
 
 export default function Footer() {
+  // The contact page already is the call to action, so skip repeating it there.
+  const showCta = useLocation().pathname !== '/contact';
   return (
-    <footer className="bg-[#231F20] text-[#FFFFFF] mt-24">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20">
+    <footer className="bg-[#231F20] text-[#FFFFFF] border-t border-white/10">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-          <div className="lg:col-span-6">
+          {showCta && <div className="lg:col-span-6">
             <div className="text-xs tracking-[0.25em] uppercase text-neutral-500 mb-6">/ Ready when you are</div>
             <h2 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-tight mb-8">
               Craft your <span className="serif-italic-accent">stack.</span>
@@ -16,25 +18,25 @@ export default function Footer() {
               Tell us how your Australian business runs. We’ll show you the StacCraft platform shaped around it — including the AI assistance that fits your operation.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#B4D234] hover:bg-[#FFFFFF] hover:text-[#231F20] text-white px-6 py-3.5 rounded-full transition-colors">
+              <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#B4D234] hover:bg-[#FFFFFF] text-[#231F20] px-6 py-3.5 rounded-full transition-colors">
                 Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
               </Link>
               <a href="mailto:info@staccraft.com.au" className="inline-flex items-center gap-2 border border-white/20 hover:border-white/60 px-6 py-3.5 rounded-full transition-colors">
                 info@staccraft.com.au <Mail className="w-4 h-4"/>
               </a>
             </div>
-          </div>
+          </div>}
 
-          <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
+          <div className={`${showCta ? 'lg:col-span-6' : 'lg:col-span-12'} grid grid-cols-2 md:grid-cols-3 gap-8 text-sm`}>
             <div>
               <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Platform</div>
               <ul className="space-y-2.5">
-                <li><Link to="/products" className="link-hover">Teamwear</Link></li>
-                <li><Link to="/products" className="link-hover">B2C Web Store</Link></li>
-                <li><Link to="/products" className="link-hover">B2B Portal</Link></li>
-                <li><Link to="/products" className="link-hover">Procurement</Link></li>
-                <li><Link to="/products" className="link-hover">Analytics</Link></li>
-                <li><Link to="/products" className="link-hover">AI Assistance</Link></li>
+                <li><Link to="/products/teamwear" className="link-hover">Teamwear</Link></li>
+                <li><Link to="/products/b2c" className="link-hover">B2C Web Store</Link></li>
+                <li><Link to="/products/b2b" className="link-hover">B2B Portal</Link></li>
+                <li><Link to="/products/procurement" className="link-hover">Procurement</Link></li>
+                <li><Link to="/products/analytics" className="link-hover">Analytics</Link></li>
+                <li><Link to="/products/ai" className="link-hover">AI Assistance</Link></li>
               </ul>
             </div>
             <div>
