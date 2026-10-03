@@ -56,14 +56,14 @@ export default function Products() {
           </aside>
 
           <div ref={panelRef} className="lg:col-span-8 scroll-mt-24">
-            <div key={current.id} className="fade-up bg-[#F1EFE6] rounded-3xl p-8 md:p-12 border border-black/5">
+            <div key={current.id} className="fade-up bg-[#F1EFE6] rounded-3xl p-6 sm:p-8 md:p-12 border border-black/5">
               <div className="flex items-center justify-between mb-8">
                 <div className="w-16 h-16 rounded-full bg-[#231F20] flex items-center justify-center">
                   <Icon className="w-7 h-7 text-[#B4D234]"/>
                 </div>
                 <span className="font-mono text-xs text-neutral-500">MODULE // {current.tag}</span>
               </div>
-              <h2 className="font-serif text-5xl md:text-6xl leading-[1] tracking-tight mb-6">{current.title}</h2>
+              <h2 className="font-serif text-4xl md:text-6xl leading-[1] tracking-tight mb-6">{current.title}</h2>
               <p className="text-neutral-700 text-lg leading-relaxed max-w-2xl mb-10">{current.lead}</p>
 
               <div className="grid md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
@@ -100,7 +100,7 @@ export default function Products() {
       </section>
 
       {/* Suite band */}
-      <section className="px-6 md:px-10 py-24 bg-[#231F20] text-[#FFFFFF]">
+      <section className="px-6 md:px-10 py-16 md:py-24 bg-[#231F20] text-[#FFFFFF]">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-4">/ One suite</div>

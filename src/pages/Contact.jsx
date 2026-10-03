@@ -35,12 +35,12 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="px-6 md:px-10 pb-24">
+      <section className="px-6 md:px-10 pb-16 md:pb-24">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-10">
           {/* Form */}
           <div className="lg:col-span-8">
             {sent ? (
-              <div className="bg-[#231F20] text-[#FFFFFF] rounded-3xl p-10 md:p-14">
+              <div className="bg-[#231F20] text-[#FFFFFF] rounded-3xl p-6 sm:p-10 md:p-14">
                 <div className="w-14 h-14 rounded-full bg-[#B4D234] flex items-center justify-center mb-8">
                   <Check className="w-6 h-6 text-[#231F20]"/>
                 </div>
@@ -81,7 +81,7 @@ export default function Contact() {
           <aside className="lg:col-span-4 space-y-4">
             <InfoCard icon={<Mail className="w-5 h-5"/>} tag="Email" title="info@staccraft.com.au" href="mailto:info@staccraft.com.au"/>
             <InfoCard icon={<MapPin className="w-5 h-5"/>} tag="Studio" title="Melbourne, Australia"/>
-            <InfoCard icon={<Clock className="w-5 h-5"/>} tag="Hours" title="Mon–Fri · 9:00–17:00 AEST"/>
+            <InfoCard icon={<Clock className="w-5 h-5"/>} tag="Hours" title="Mon–Fri · 9am–5pm AEST"/>
             <div className="rounded-2xl bg-[#231F20] text-[#FFFFFF] p-6">
               <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Expect</div>
               <ul className="space-y-2.5 text-sm text-white/80">

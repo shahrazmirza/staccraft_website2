@@ -15,14 +15,14 @@ export default function Home() {
   return (
     <div>
       {/* HERO */}
-      <section className="pt-40 pb-24 px-6 md:px-10 relative overflow-hidden">
+      <section className="pt-40 pb-16 md:pb-24 px-6 md:px-10 relative overflow-hidden">
         <div className="absolute inset-0 dotted-bg opacity-70 -z-10" />
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8 fade-up">
               <div className="inline-flex items-center gap-2 border border-black/10 bg-white/60 backdrop-blur-sm rounded-full px-3.5 py-1.5 mb-8">
                 <Circle className="w-2 h-2 fill-[#B4D234] text-[#B4D234]" />
-                <span className="text-xs tracking-widest uppercase text-neutral-700">Bespoke technology, built in Australia</span>
+                <span className="text-[10px] sm:text-xs tracking-[0.12em] sm:tracking-widest uppercase text-neutral-700 whitespace-nowrap">Bespoke technology, built in Australia</span>
               </div>
               <h1 className="font-serif text-[48px] leading-[0.95] sm:text-[72px] md:text-[104px] tracking-[-0.03em] font-medium">
                 Commerce that <span className="serif-italic-accent">fits</span>
@@ -105,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* OFFERINGS */}
-      <section id="products" className="py-28 px-6 md:px-10">
+      <section id="products" className="py-20 md:py-28 px-6 md:px-10">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 mb-16">
             <div className="lg:col-span-4">
@@ -125,16 +125,16 @@ export default function Home() {
             {products.map((p, i) => {
               const Icon = p.icon;
               return (
-                <Link to={`/products/${p.id}`} key={p.id} className="group relative bg-white/50 hover:bg-[#231F20] border border-black/10 hover:border-[#231F20] rounded-2xl p-7 transition-all duration-300 overflow-hidden">
-                  <div className="flex items-center justify-between mb-8">
+                <Link to={`/products/${p.id}`} key={p.id} className="group relative bg-white/50 hover:bg-[#231F20] border border-black/10 hover:border-[#231F20] rounded-2xl p-6 md:p-7 transition-all duration-300 overflow-hidden">
+                  <div className="flex items-center justify-between mb-6 md:mb-8">
                     <div className="w-11 h-11 rounded-full border border-black/20 group-hover:border-[#B4D234] group-hover:bg-[#B4D234] flex items-center justify-center transition-colors">
                       <Icon className="w-5 h-5 text-neutral-800 group-hover:text-[#231F20] transition-colors"/>
                     </div>
                     <span className="font-mono text-xs text-neutral-400 group-hover:text-white/40 transition-colors">{p.tag}</span>
                   </div>
-                  <h3 className="font-serif text-3xl mb-3 text-[#231F20] group-hover:text-[#FFFFFF] transition-colors">{p.title}</h3>
+                  <h3 className="font-serif text-2xl md:text-3xl mb-3 text-[#231F20] group-hover:text-[#FFFFFF] transition-colors">{p.title}</h3>
                   <p className="text-sm text-neutral-600 group-hover:text-white/70 transition-colors leading-relaxed">{p.lead}</p>
-                  <div className="mt-6 pt-6 border-t border-black/10 group-hover:border-white/10 flex items-center justify-between text-sm text-neutral-800 group-hover:text-[#FFFFFF] transition-colors">
+                  <div className="mt-5 pt-5 md:mt-6 md:pt-6 border-t border-black/10 group-hover:border-white/10 flex items-center justify-between text-sm text-neutral-800 group-hover:text-[#FFFFFF] transition-colors">
                     <span>Explore</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                   </div>
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* INTEGRATIONS */}
-      <section className="py-24 px-6 md:px-10 bg-[#231F20] text-[#FFFFFF]">
+      <section className="py-16 md:py-24 px-6 md:px-10 bg-[#231F20] text-[#FFFFFF]">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 mb-14">
             <div className="lg:col-span-5">
@@ -161,8 +161,8 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
             {integrations.map((i) => (
-              <div key={i.name} className="bg-[#231F20] p-8 hover:bg-[#1c1c1c] transition-colors">
-                <div className="flex items-baseline justify-between mb-6">
+              <div key={i.name} className="bg-[#231F20] py-6 md:p-8 hover:bg-[#1c1c1c] transition-colors">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-4 md:mb-6">
                   <div className="font-serif text-3xl">{i.name}</div>
                   <div className="font-mono text-xs text-white/40">{i.role}</div>
                 </div>
@@ -174,13 +174,13 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-24 px-6 md:px-10">
+      <section className="py-16 md:py-24 px-6 md:px-10">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-6">
             {stats.map((s, i) => (
               <div key={i} className="border-t border-black/20 pt-6">
-                <div className="font-serif text-6xl md:text-7xl leading-none tracking-tight">{s.value}</div>
-                <div className="mt-6 text-sm text-neutral-700 max-w-[220px]">{s.label}</div>
+                <div className="font-serif text-5xl md:text-7xl leading-none tracking-tight">{s.value}</div>
+                <div className="mt-4 md:mt-6 text-sm text-neutral-700 max-w-[220px]">{s.label}</div>
                 <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mt-2">// {s.note}</div>
               </div>
             ))}
@@ -189,10 +189,10 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="py-24 px-6 md:px-10 bg-[#F1EFE6]">
+      <section className="py-16 md:py-24 px-6 md:px-10 bg-[#F1EFE6]">
         <div className="max-w-[1100px] mx-auto text-center">
           <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">/ Testimonial</div>
-          <blockquote className="font-serif text-3xl md:text-5xl leading-[1.15] tracking-tight text-neutral-900">
+          <blockquote className="font-serif text-2xl sm:text-3xl md:text-5xl leading-[1.15] tracking-tight text-neutral-900">
             “{testimonial.quote.replace(/“|”/g,'')}”
           </blockquote>
           <div className="mt-8 text-sm text-neutral-600">— {testimonial.author}, {testimonial.role}</div>

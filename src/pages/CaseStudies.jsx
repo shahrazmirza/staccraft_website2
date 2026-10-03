@@ -21,18 +21,18 @@ export default function CaseStudies() {
       </section>
 
       {/* Flagship */}
-      <section className="px-6 md:px-10 mb-24">
+      <section className="px-6 md:px-10 mb-16 md:mb-24">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 lg:items-center">
-            <div className="lg:col-span-7 relative rounded-3xl overflow-hidden aspect-[4/3] group">
+            <div className="lg:col-span-7 relative rounded-3xl overflow-hidden aspect-[4/5] sm:aspect-[4/3] group">
               <img src={caseStudy.image} alt="Kookaburra Sport" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
-              <div className="absolute top-6 left-6 flex items-center gap-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"/>
+              <div className="absolute top-5 left-5 md:top-6 md:left-6 flex flex-wrap items-center gap-2">
                 <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-widest bg-[#B4D234] text-[#231F20]">Flagship</span>
                 <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-widest bg-white/90 text-[#231F20]">Bespoke stack</span>
               </div>
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <div className="font-serif text-4xl md:text-5xl leading-tight">{caseStudy.title}</div>
+              <div className="absolute bottom-5 left-5 right-5 md:bottom-6 md:left-6 md:right-6 text-white">
+                <div className="font-serif text-3xl sm:text-4xl md:text-5xl leading-tight">{caseStudy.title}</div>
                 <div className="text-white/80 text-sm mt-1">{caseStudy.subtitle}</div>
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function CaseStudies() {
       </section>
 
       {/* Modules */}
-      <section className="px-6 md:px-10 mb-24">
+      <section className="px-6 md:px-10 mb-16 md:mb-24">
         <div className="max-w-[1400px] mx-auto space-y-20 lg:space-y-28">
           {caseModules.map((m, i) => (
             <div key={i} className={`grid lg:grid-cols-12 gap-8 lg:gap-12 items-center ${i % 2 ? 'lg:[direction:rtl]' : ''}`}>
@@ -98,7 +98,7 @@ export default function CaseStudies() {
       </section>
 
       <section className="px-6 md:px-10 py-16">
-        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Have a similar story?</div>
             <h3 className="font-serif text-4xl md:text-5xl leading-tight">Let’s craft yours.</h3>

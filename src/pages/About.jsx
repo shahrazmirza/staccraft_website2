@@ -19,7 +19,7 @@ export default function About() {
       </section>
 
       {/* Values ribbon */}
-      <section className="px-6 md:px-10 mb-24">
+      <section className="px-6 md:px-10 mb-16 md:mb-24">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-4">
           {[{ icon: Flag, tag: 'Made here', t: 'Built in Australia', d: 'Local teams, local hours, local accountability — you speak with the same people who build your platform.' },
             { icon: Heart, tag: 'Craft over checklist', t: 'Shaped to fit', d: 'We don’t hand over a template. We map your operation and design the platform against how you actually run.' },
@@ -36,7 +36,7 @@ export default function About() {
       </section>
 
       {/* Principles */}
-      <section className="px-6 md:px-10 mb-24">
+      <section className="px-6 md:px-10 mb-16 md:mb-24">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 mb-12">
             <div className="lg:col-span-5">
@@ -57,7 +57,7 @@ export default function About() {
       </section>
 
       {/* Process */}
-      <section className="px-6 md:px-10 py-24 bg-[#231F20] text-[#FFFFFF]">
+      <section className="px-6 md:px-10 py-16 md:py-24 bg-[#231F20] text-[#FFFFFF]">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 mb-14">
             <div className="lg:col-span-5">
@@ -89,7 +89,7 @@ export default function About() {
       </section>
 
       <section className="px-6 md:px-10 py-20">
-        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <h3 className="font-serif text-4xl md:text-5xl leading-tight">Talk to the team that <span className="serif-italic-accent">builds</span> it.</h3>
           <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>

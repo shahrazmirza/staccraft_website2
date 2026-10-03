@@ -83,7 +83,7 @@ export default function ProductDetail() {
       </section>
 
       {/* WORKFLOWS */}
-      <section className="px-6 md:px-10 py-24 bg-[#231F20] text-white">
+      <section className="px-6 md:px-10 py-16 md:py-24 bg-[#231F20] text-white">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 mb-14">
             <div className="lg:col-span-5">
@@ -112,7 +112,7 @@ export default function ProductDetail() {
       </section>
 
       {/* CAPABILITY GROUPS */}
-      <section className="px-6 md:px-10 py-24">
+      <section className="px-6 md:px-10 py-16 md:py-24">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 mb-12">
             <div className="lg:col-span-5">
@@ -140,8 +140,8 @@ export default function ProductDetail() {
       </section>
 
       {/* INTEGRATIONS band */}
-      <section className="px-6 md:px-10 pb-24">
-        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-10 md:p-14">
+      <section className="px-6 md:px-10 pb-16 md:pb-24">
+        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#F1EFE6] p-6 sm:p-10 md:p-14">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
               <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-3">/ Plays well with</div>
@@ -165,7 +165,7 @@ export default function ProductDetail() {
 
       {/* RELATED */}
       {related.length > 0 && (
-        <section className="px-6 md:px-10 pb-24">
+        <section className="px-6 md:px-10 pb-16 md:pb-24">
           <div className="max-w-[1400px] mx-auto">
             <div className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-4">/ Continue exploring</div>
             <div className="grid md:grid-cols-2 gap-4">
@@ -194,7 +194,7 @@ export default function ProductDetail() {
 
       {/* CTA */}
       <section className="px-6 md:px-10 pb-20">
-        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#231F20] text-white p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="max-w-[1400px] mx-auto rounded-3xl bg-[#231F20] text-white p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <h3 className="font-serif text-3xl md:text-5xl leading-tight max-w-2xl">See <span className="serif-italic-accent">{product.title}</span> shaped to your operation.</h3>
           <Link to="/contact" className="group inline-flex items-center gap-2 bg-[#B4D234] text-[#231F20] hover:bg-white px-6 py-3.5 rounded-full text-sm transition-colors">
             Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
