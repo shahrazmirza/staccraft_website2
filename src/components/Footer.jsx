@@ -43,7 +43,6 @@ export default function Footer() {
                 <li><Link to="/about" className="link-hover">About</Link></li>
                 <li><Link to="/cases" className="link-hover">Case studies</Link></li>
                 <li><Link to="/contact" className="link-hover">Contact</Link></li>
-                <li><a href="#" className="link-hover">Careers</a></li>
               </ul>
             </div>
             <div>
@@ -61,12 +60,11 @@ export default function Footer() {
             <Link to="/" className="shrink-0">
               <img src="/assets/logo-light.png" alt="StacCraft" className="h-7 w-auto" />
             </Link>
-            <span>© {new Date().getFullYear()} StacCraft. Bespoke commerce technology, built in Australia.</span>
+            <span>© {new Date().getFullYear()} StacCraft Pty Ltd · ABN 74 690 577 845. Bespoke commerce technology, built in Australia.</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#" className="link-hover">Privacy</a>
-            <a href="#" className="link-hover">Terms</a>
-            <a href="#" className="link-hover">Security</a>
+            <Link to="/privacy" className="link-hover">Privacy</Link>
+            <Link to="/terms" className="link-hover">Terms</Link>
           </div>
         </div>
       </div>

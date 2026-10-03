@@ -38,7 +38,6 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#" className="text-sm text-neutral-700 link-hover">Sign in</a>
           <Link to="/contact" className="group inline-flex items-center gap-1.5 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] text-sm px-4 py-2.5 rounded-full transition-colors">
             Book a walkthrough
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />

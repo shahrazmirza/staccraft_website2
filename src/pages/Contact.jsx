@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail, MapPin, Clock, Check } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
@@ -73,6 +74,9 @@ export default function Contact() {
                 <button type="submit" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#231F20] hover:bg-[#B4D234] hover:text-[#231F20] text-[#FFFFFF] px-7 py-3.5 rounded-full text-sm transition-colors">
                   Book my walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
                 </button>
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  We’ll only use your details to respond to your enquiry. See our <Link to="/privacy" className="underline underline-offset-2 hover:text-[#231F20]">Privacy policy</Link>.
+                </p>
               </form>
             )}
           </div>

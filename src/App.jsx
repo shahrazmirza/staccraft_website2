@@ -9,6 +9,7 @@ import ProductDetail from './pages/ProductDetail';
 import CaseStudies from './pages/CaseStudies';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import { Privacy, Terms } from './pages/Legal';
 import { Toaster } from './components/ui/toaster';
 import { products } from './mock/mock';
 
@@ -18,6 +19,8 @@ const titles = {
   '/cases': 'Case Studies — StacCraft',
   '/about': 'About — StacCraft',
   '/contact': 'Contact — StacCraft',
+  '/privacy': 'Privacy policy — StacCraft',
+  '/terms': 'Terms of use — StacCraft',
 };
 
 function ScrollToTop() {
@@ -45,6 +48,8 @@ function App() {
             <Route path="/cases" element={<CaseStudies />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />
