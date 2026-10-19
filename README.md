@@ -12,3 +12,5 @@ Pages: `/`, `/products`, `/products/:id`, `/cases`, `/about`, `/contact`.
 Page copy and product data are in `src/mock/mock.js`.
 
 The contact form only shows a confirmation toast; it doesn't send anything yet.
+
+Design rules (colours, type, layout, components) are in `DESIGN_GUIDELINES.md`. Follow them when adding or replacing content.
