@@ -1,12 +1,11 @@
 # StacCraft design guidelines
 
-This document records the visual design of this website so new content can be
-brought in without changing its look. **This branch's design is the source of
-truth. When you add content written on another branch, change only the words,
-images and data. Don't change the design rules below.**
+This document records the visual design of this website. All words, pages and
+menus come from `content.json`; this design decides how they look. **When the
+content changes, change `content.json` only. Don't change the design rules below.**
 
 Stack: React 19 + Vite + Tailwind CSS v3. Fonts load from Google Fonts in
-`src/index.css`; all images live in `public/assets/`.
+`src/index.css`; images live in `public/live/` and `public/tpl/`.
 
 ---
 
@@ -14,20 +13,35 @@ Stack: React 19 + Vite + Tailwind CSS v3. Fonts load from Google Fonts in
 
 | What | Where |
 | --- | --- |
-| Products (title, lead, bullets, features) | `products` in `src/mock/mock.js` |
-| Product detail pages (tagline, hero, screenshots, workflows, groups, related) | `productDetails` in `src/mock/mock.js` |
-| Integrations, process steps, principles | `integrations`, `process`, `principles` in `src/mock/mock.js` |
-| Home stats, testimonial, client logos, hero images | `stats`, `testimonial`, `clientLogos`, `heroImages` in `src/mock/mock.js` |
-| Case study | `caseStudy`, `caseModules` in `src/mock/mock.js` |
-| Page headlines and intro copy | Inline in each file in `src/pages/` |
-| Footer and nav copy | `src/components/Footer.jsx`, `src/components/Navbar.jsx` |
-| Privacy / Terms copy | `src/pages/Legal.jsx` |
-| Browser tab titles | `titles` in `src/App.jsx` |
+| Every page, its sections and their words | `pages` in `content.json` |
+| Menu (top-level links and the Platform / Industries dropdowns) | `showInNav`, `navGroup`, `navLabel` on each page in `content.json` |
+| Logo, header button, footer text, email, form and analytics settings | `brand` in `content.json` |
+| Browser tab title and search description | each page's `title` and `description` |
+| Images | `public/live/`, `public/tpl/`, referenced from `content.json` as `live/…` or `tpl/…` |
 
-**Rule:** put content in `mock.js` wherever a data shape already exists, and
-keep the existing field names. The pages render whatever is in those arrays.
-For example, adding a product means adding one object to `products` and one to
-`productDetails`; no markup changes are needed.
+Each section has a `type`. `src/pages/Page.jsx` maps it to a component in
+`src/sections/`:
+
+| Type | Component | Look |
+| --- | --- | --- |
+| `hero` | `Hero.jsx` | Page headline. `layout: "center"` (Home, Integrations) puts the console or diagram full width below; otherwise the visual sits to the right |
+| `split` | `Split` | Copy beside an example screen; `panel: true` puts it in a sand panel |
+| `cards`, `benefits`, `flow`, `sports` | `Cards`, `Benefits`, `Flow`, `Sports` | Card grids (section 6) |
+| `tabs`, `modules`, `calc`, `e2eflow` | `Tabs`, `Modules`, `Calc`, `E2EFlow` | Interactive: tab list, module picker, cost calculator, order-flow diagram |
+| `stats`, `stages`, `compare`, `stack`, `faq` | same names | Numbers, process with exceptions, comparison table, cost stack, questions |
+| `integrations` | `Integrations` | Ink band, divided grid |
+| `statement`, `richtext`, `cta`, `video` | same names | Big sentence, long text, closing CTA panel, video |
+| `beforeafter`, `tenants`, `syncmap` | same names | Diagrams |
+| `showcase`, `shots` | same names | Real screenshots in browser frames |
+| `posts`, `article` | `Blog.jsx` | Insights index and articles (also the Privacy policy) |
+| `contact` | `Contact.jsx` | Contact page and form |
+
+**Rule:** a new page or section is added in `content.json` using one of these
+types. A new `type` needs a new component built from the parts in section 6.
+
+The example-screen mock-ups and diagrams (`src/legacy/visuals.js`) keep their
+own markup and are restyled in this palette by `src/styles/visuals.css`. If a
+mock-up looks off-palette, fix it with an override at the end of that file.
 
 ---
 
@@ -94,6 +108,8 @@ These give the site its voice. Keep them in new content.
    - `Craft your <accent>stack.</accent>`
 
    Pick the word that carries the meaning. Never highlight a whole sentence.
+   In `content.json`, wrap the word in `{braces}` to accent it. Page titles
+   (hero and contact headings) and CTA headings accent their last word automatically.
 2. **Eyebrow label.** Sits above every section heading. Starts with `/ `.
    `text-xs tracking-[0.3em] uppercase text-neutral-500 mb-4`, for example
    `/ What we offer`, `/ Integrations`, `/ Our process`.
@@ -230,9 +246,10 @@ options are pill toggle buttons (active = ink fill).
 
 Shared on every page; don't fork them per page. The navbar is fixed. It's
 transparent at the top and becomes `bg-[#FBFAF5]/90 backdrop-blur-lg` with a
-hairline border after 20px of scroll. The active link is an ink pill. The
-footer is ink, opens with a "Craft your stack." call to action, and uses the light logo
-(`/assets/logo-light.png`).
+hairline border after 20px of scroll. The active link is an ink pill; pages
+sharing a `navGroup` open as a dropdown. The full menu shows from 1280px (`xl`);
+below that it collapses to the menu button. The footer is ink, with the light
+logo, the brand blurb, the header button and one link column per menu group.
 
 ---
 
@@ -254,23 +271,21 @@ Keep it subtle and consistent:
 - Photos: real, documentary-style photos of kit, apparel and operations, used full-bleed in
   `rounded-2xl`/`rounded-3xl` frames with `object-cover`.
 - Product UI: real screenshots in the browser frame (section 6).
-- Logos: `/assets/logo.png` on light, `/assets/logo-light.png` on ink.
-- Store every image locally in `public/assets/` and reference it as
-  `/assets/<file>`. Don't hotlink images from other sites.
+- Logos: `brand.logo` (`tpl/logo.png`) on light, `brand.logoLight` (`tpl/logo-light.png`) on ink.
+- Store every image locally in `public/live/` or `public/tpl/` and reference it
+  from `content.json` as `live/<file>` or `tpl/<file>`. Don't hotlink images from other sites.
 - Every `<img>` needs meaningful `alt` text; images below the fold use `loading="lazy"`.
 
 ---
 
-## 9. Checklist for merging content from another branch
+## 9. Checklist for content changes
 
-1. Copy words and data **into the existing structures** (`mock.js` fields,
-   existing page sections). Don't bring over markup, CSS, colours or fonts
-   from the other branch.
-2. Give each new section heading an eyebrow (`/ Label`) and, for headlines, one accent word.
-3. Bring new images into `public/assets/` and point to them with `/assets/...`.
-4. If the content needs a section that doesn't exist yet, build it from the
+1. Change the words in `content.json` (or publish from the prototype editor and
+   copy its `content.json` in). Don't add markup, CSS, colours or fonts.
+2. Give each section an `eyebrow` and, where it helps, accent one heading word with `{braces}`.
+3. Put new images in `public/live/` or `public/tpl/` and reference them as `live/…` or `tpl/…`.
+4. If the content needs a section type that doesn't exist yet, build it from the
    components in section 6 and follow the layout rules in section 4.
-5. Leave anything not yet confirmed as a visible `[ placeholder ]` rather than
+5. Leave anything not yet confirmed as a visible `[placeholder]` rather than
    inventing it.
-6. Run `npm run build`, then check each changed page at mobile and desktop
-   widths against the current site.
+6. Run `npm run build`, then check each changed page at mobile and desktop widths.

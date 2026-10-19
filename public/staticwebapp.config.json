@@ -1,0 +1,9 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*", "/live/*", "/tpl/*", "*.{png,jpg,jpeg,gif,svg,webp,ico,css,js,json,txt,xml,woff,woff2}"]
+  },
+  "routes": [
+    { "route": "/assets/*", "headers": { "cache-control": "public, max-age=31536000, immutable" } }
+  ]
+}

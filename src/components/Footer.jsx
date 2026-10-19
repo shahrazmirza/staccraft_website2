@@ -1,70 +1,57 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, MapPin, Mail } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { brand, navModel, asset, getPage, toPath } from '../site';
+import { Tx, Arrow } from './ui';
 
-export default function Footer() {
+export default function Footer({ onCookieSettings }) {
+  const nav = navModel();
+  const cols = nav.filter((i) => i.group).map((g) => ({ h: g.group, pages: g.pages }));
+  const solo = nav.filter((i) => i.page).map((i) => i.page);
+  if (solo.length) cols.push({ h: 'Explore', pages: solo });
+  const privacy = getPage('privacy');
+
   return (
-    <footer className="bg-[#231F20] text-[#FFFFFF] border-t border-white/10">
+    <footer className="bg-[#231F20] text-white border-t border-white/10">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-          <div className="lg:col-span-5">
-            <div className="text-xs tracking-[0.25em] uppercase text-neutral-500 mb-6">/ Ready when you are</div>
-            <h2 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-tight mb-8">
-              Craft your <span className="serif-italic-accent">stack.</span>
-            </h2>
-            <p className="text-white/70 max-w-lg text-lg leading-relaxed">
-              Tell us how your Australian business runs. We’ll show you the StacCraft platform shaped around it — including the AI assistance that fits your operation.
-            </p>
+          <div className="lg:col-span-4">
+            <Link to="/" className="inline-block mb-8"><img src={asset(brand.logoLight) || '/tpl/logo-light.png'} alt={brand.name} className="h-9 w-auto" /></Link>
+            <Tx as="p" text={brand.footerBlurb} className="block text-white/70 max-w-md leading-relaxed" />
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/contact" className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#B4D234] hover:bg-[#FFFFFF] text-[#231F20] px-6 py-3.5 rounded-full transition-colors">
-                Book a walkthrough <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45"/>
-              </Link>
-              <a href="mailto:info@staccraft.com.au" className="inline-flex items-center gap-2 border border-white/20 hover:border-white/60 px-6 py-3.5 rounded-full transition-colors">
-                info@staccraft.com.au <Mail className="w-4 h-4"/>
-              </a>
+              {brand.headerCtaLabel && (
+                <Link to={toPath(brand.headerCtaLink || '#contact')} className="group shrink-0 whitespace-nowrap inline-flex items-center gap-2 bg-[#B4D234] hover:bg-white text-[#231F20] px-6 py-3.5 rounded-full text-sm transition-colors">
+                  {brand.headerCtaLabel} <Arrow />
+                </Link>
+              )}
             </div>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 text-sm">
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 text-sm">
+            {cols.map((c) => (
+              <div key={c.h}>
+                <div className="text-white/40 text-xs tracking-widest uppercase mb-4">{c.h}</div>
+                <ul className="space-y-2.5">
+                  {c.pages.map((p) => <li key={p.id}><Link to={'/' + p.id} className="link-hover">{p.navLabel || p.title}</Link></li>)}
+                </ul>
+              </div>
+            ))}
             <div>
-              <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Platform</div>
-              <ul className="space-y-2.5">
-                <li><Link to="/products/teamwear" className="link-hover">Teamwear</Link></li>
-                <li><Link to="/products/b2c" className="link-hover">B2C Web Store</Link></li>
-                <li><Link to="/products/b2b" className="link-hover">B2B Portal</Link></li>
-                <li><Link to="/products/procurement" className="link-hover">Procurement</Link></li>
-                <li><Link to="/products/analytics" className="link-hover">Analytics</Link></li>
-                <li><Link to="/products/ai" className="link-hover">AI Assistance</Link></li>
-              </ul>
-            </div>
-            <div>
-              <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Company</div>
-              <ul className="space-y-2.5">
-                <li><Link to="/about" className="link-hover">About</Link></li>
-                <li><Link to="/cases" className="link-hover">Case studies</Link></li>
-                <li><Link to="/contact" className="link-hover">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Studio</div>
+              <div className="text-white/40 text-xs tracking-widest uppercase mb-4">Contact</div>
               <ul className="space-y-2.5 text-white/70">
-                <li className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0"/> Melbourne, AU</li>
-                <li className="[overflow-wrap:anywhere]"><a href="mailto:info@staccraft.com.au" className="link-hover">info@staccraft.com.au</a></li>
+                {brand.email && <li className="flex items-start gap-2 [overflow-wrap:anywhere]"><Mail className="w-4 h-4 mt-0.5 shrink-0" /><a href={'mailto:' + brand.email} className="link-hover">{brand.email}</a></li>}
+                {brand.phone && <li className="flex items-start gap-2"><Phone className="w-4 h-4 mt-0.5 shrink-0" /><Tx text={brand.phone} /></li>}
+                {brand.address && <li className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0" /><Tx text={brand.address} /></li>}
               </ul>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between pt-8 gap-4 text-xs text-white/50">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <Link to="/" className="shrink-0">
-              <img src="/assets/logo-light.png" alt="StacCraft" className="h-7 w-auto" />
-            </Link>
-            <span>© {new Date().getFullYear()} StacCraft Pty Ltd · ABN 74 690 577 845. Bespoke commerce technology, built in Australia.</span>
-          </div>
+          <Tx text={brand.copyright || `© ${new Date().getFullYear()} ${brand.name}`} />
           <div className="flex items-center gap-6">
-            <Link to="/privacy" className="link-hover">Privacy</Link>
-            <Link to="/terms" className="link-hover">Terms</Link>
+            {privacy && <Link to="/privacy" className="link-hover">{privacy.navLabel || privacy.title}</Link>}
+            {onCookieSettings && <button type="button" onClick={onCookieSettings} className="link-hover">Cookie settings</button>}
           </div>
         </div>
       </div>

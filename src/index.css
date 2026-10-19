@@ -114,3 +114,20 @@ body {
   background-image: radial-gradient(circle, rgba(20,20,20,0.08) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+/* Placeholder text in content.json: [like this] */
+mark.ph { background: rgba(180,210,52,.25); color: #231F20; padding: 0 .3em; border-radius: 4px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .85em; }
+
+/* Article body (Insights guides, Privacy policy), rendered from content.json markdown */
+.prose-sc { color: #3a3a38; font-size: 1.0625rem; line-height: 1.75; }
+.prose-sc > * + * { margin-top: 1.1em; }
+.prose-sc h2 { font-family: 'Fraunces', Georgia, serif; font-size: 1.875rem; line-height: 1.15; letter-spacing: -0.01em; color: #231F20; margin-top: 2.2em; scroll-margin-top: 7rem; }
+.prose-sc h3 { font-family: 'Fraunces', Georgia, serif; font-size: 1.375rem; line-height: 1.25; color: #231F20; margin-top: 1.8em; scroll-margin-top: 7rem; }
+.prose-sc ul, .prose-sc ol { padding-left: 1.25rem; }
+.prose-sc ul { list-style: disc; }
+.prose-sc ol { list-style: decimal; }
+.prose-sc li + li { margin-top: .45em; }
+.prose-sc li::marker { color: #231F20; }
+.prose-sc a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #B4D234; text-decoration-thickness: 2px; }
+.prose-sc strong { color: #231F20; font-weight: 600; }
+.prose-sc .callout { border-left: 3px solid #B4D234; background: #F1EFE6; padding: 1rem 1.25rem; border-radius: 0 12px 12px 0; color: #231F20; }
