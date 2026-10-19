@@ -175,7 +175,7 @@ export function Stats({ s }) {
           const ph = /\[/.test(it.value || '');
           return (
             <div key={i} className="border-t border-black/20 pt-6">
-              <Tx text={it.value} className={`block font-serif text-5xl md:text-7xl leading-none tracking-tight ${ph ? 'text-neutral-300 text-4xl md:text-5xl' : ''}`} />
+              <Tx text={it.value} className={`block font-serif leading-none tracking-tight [overflow-wrap:anywhere] ${ph ? 'text-2xl md:text-3xl' : 'text-5xl md:text-7xl'}`} />
               <Tx as="p" text={it.label} className="block mt-4 md:mt-6 text-sm text-neutral-700 max-w-[300px] leading-relaxed" />
             </div>
           );
@@ -297,23 +297,100 @@ export function Video({ s }) {
 }
 
 /* ---------- Diagrams (SVG from the original site) ---------- */
-function Diagram({ html, caption, minW = 'min-w-[880px]' }) {
+// Wide SVG diagram on large screens; below 1024px `mobile` shows a stacked version instead,
+// so nothing scrolls sideways on a phone or tablet.
+function Diagram({ html, caption, mobile }) {
   return (
     <figure>
-      <div className="rounded-3xl border border-black/10 bg-white p-4 md:p-8 overflow-x-auto">
-        <div className={`mk ${minW}`} dangerouslySetInnerHTML={{ __html: html }} />
+      <div className={`${mobile ? 'hidden lg:block' : ''} rounded-3xl border border-black/10 bg-white p-4 md:p-8`}>
+        <div className="mk" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
+      {mobile && <div className="lg:hidden">{mobile}</div>}
       {caption && <Tx as="figcaption" text={caption} className="block mt-5 text-sm text-neutral-600 max-w-3xl leading-relaxed" />}
     </figure>
   );
 }
 
+const Chip = ({ children, dark }) => (
+  <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm ${dark ? 'bg-white/10 text-white' : 'bg-white border border-black/10'}`}>{children}</span>
+);
+
+// Phone version of the before/after diagram (same wording as the SVG).
+const BA_TODAY = [['Web store', 'copied'], ['Spreadsheet', 'emailed'], ['Email', 'chased'], ['Phone', 'called'], ['Supplier', 'typed in again'], ['ERP', '']];
+function BeforeAfterMobile() {
+  return (
+    <div className="grid gap-4">
+      <div className="rounded-3xl bg-white border border-black/10 p-6">
+        <div className="font-serif text-2xl">Today</div>
+        <p className="text-sm text-neutral-600 mt-1 mb-5">Six tools, and the order is typed in again at every hand-off</p>
+        <ol className="space-y-1.5">
+          {BA_TODAY.map(([n, how]) => (
+            <li key={n}>
+              <span className="inline-flex px-3 py-1.5 rounded-lg text-sm border border-black/15 bg-[#F1EFE6]">{n}</span>
+              {how && <span className="block pl-4 py-1 text-xs font-mono text-neutral-500">↓ {how}</span>}
+            </li>
+          ))}
+        </ol>
+        <p className="mt-5 text-xs font-mono uppercase tracking-widest text-neutral-500">3 re-keys · 3 chases · 0 shared view</p>
+      </div>
+      <div className="rounded-3xl bg-[#231F20] text-white p-6">
+        <div className="font-serif text-2xl">With {brand.name}</div>
+        <p className="text-sm text-white/60 mt-1 mb-5">One platform. Every system connected. Nothing typed twice.</p>
+        <div className="inline-flex px-4 py-2 rounded-full bg-[#B4D234] text-[#231F20] font-medium mb-4">{brand.name}</div>
+        <div className="flex flex-wrap gap-2">{['Web store', 'Dealers', 'Suppliers', erpIn().replace(/^your/, 'Your'), 'Warehouse'].map((n) => <Chip key={n} dark>↔ {n}</Chip>)}</div>
+        <p className="mt-5 text-xs font-mono uppercase tracking-widest text-[#B4D234]">0 re-keys · every update visible to everyone</p>
+      </div>
+    </div>
+  );
+}
+
+// Phone version of the "one platform, many businesses" diagram.
+function TenantsMobile({ s }) {
+  return (
+    <div className="grid gap-3">
+      <div className="grid sm:grid-cols-2 gap-3">
+        {(s.businesses || []).map((t, i) => (
+          <div key={i} className={`rounded-2xl p-5 ${t.next ? 'border-2 border-dashed border-black/25' : 'bg-white border border-black/10'}`}>
+            <Tx text={t.kind} className="block text-[10px] font-mono uppercase tracking-widest text-neutral-500" />
+            <Tx text={t.name} className="block font-serif text-xl mt-1 mb-2" />
+            <ul className="text-sm text-neutral-600 space-y-0.5">{(t.lines || []).map((l, k) => <li key={k}><Tx text={l} /></li>)}</ul>
+            {(t.sports || []).length > 0 && <div className="flex flex-wrap gap-1.5 mt-3">{t.sports.map((x) => <span key={x} className="px-2.5 py-0.5 rounded-full text-xs bg-[#F1EFE6]">{x === 'Australian rules' ? 'Aussie rules' : x}</span>)}</div>}
+          </div>
+        ))}
+      </div>
+      <div className="rounded-2xl bg-[#231F20] text-white p-5">
+        <div className="font-serif text-2xl">{brand.name} platform</div>
+        <p className="text-sm text-white/60 mt-1 mb-4">Shared by every business · each with its own database, branding and rules</p>
+        <div className="flex flex-wrap gap-2">{(s.services || []).map((v) => <Chip key={v} dark><Tx text={v} /></Chip>)}</div>
+      </div>
+    </div>
+  );
+}
+
+// Phone version of the ERP sync map: the two systems; the row list below the figure carries the detail.
+function SyncMobile({ s }) {
+  const Box = ({ title, sub, items, dark }) => (
+    <div className={`rounded-2xl p-5 ${dark ? 'bg-[#231F20] text-white' : 'bg-white border border-black/10'}`}>
+      <div className="font-serif text-2xl">{title}</div>
+      {sub && <Tx as="p" text={sub} className={`block text-sm mt-1 mb-3 ${dark ? 'text-white/60' : 'text-neutral-600'}`} />}
+      <div className="flex flex-wrap gap-2">{(items || []).map((x) => <Chip key={x} dark={dark}><Tx text={x} /></Chip>)}</div>
+    </div>
+  );
+  return (
+    <div className="grid gap-2">
+      <Box title={brand.name} sub={s.usSub || 'Stores, portals & admin'} items={s.usItems} dark />
+      <div className="text-center font-mono text-sm text-neutral-500" aria-hidden="true">⇅ {(s.rows || []).length} data flows</div>
+      <Box title={s.system || 'Your ERP'} sub={s.systemSub} items={s.systemItems} />
+    </div>
+  );
+}
+
 export const BeforeAfter = ({ s }) => (
-  <Section anchor={s.anchor} tone={toneOf(s)}><SecHead s={s} /><Diagram html={baSvg()} caption={s.caption} /></Section>
+  <Section anchor={s.anchor} tone={toneOf(s)}><SecHead s={s} /><Diagram html={baSvg()} caption={s.caption} mobile={<BeforeAfterMobile />} /></Section>
 );
 
 export const Tenants = ({ s }) => (
-  <Section anchor={s.anchor} tone={toneOf(s)}><SecHead s={s} /><Diagram html={tenantsSvg(s)} caption={s.caption} /></Section>
+  <Section anchor={s.anchor} tone={toneOf(s)}><SecHead s={s} /><Diagram html={tenantsSvg(s)} caption={s.caption} mobile={<TenantsMobile s={s} />} /></Section>
 );
 
 export function Syncmap({ s }) {
@@ -323,7 +400,7 @@ export function Syncmap({ s }) {
   return (
     <Section anchor={s.anchor} tone={toneOf(s)}>
       <SecHead s={s} />
-      <Diagram html={syncSvg(s)} caption={s.caption} />
+      <Diagram html={syncSvg(s)} caption={s.caption} mobile={<SyncMobile s={s} />} />
       {rows.some((r) => r.text) && (
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
           {rows.map((r, i) => (
@@ -360,8 +437,8 @@ export function E2EFlow({ s }) {
           ))}
         </div>
       )}
-      <Diagram html={flowSvg(F)} minW="min-w-[960px]" />
-      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-600">
+      <Diagram html={flowSvg(F)} mobile={<span />} />
+      <div className="hidden lg:flex mt-4 flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-600">
         <span className="inline-flex items-center gap-2"><i className="w-6 h-0.5 bg-[#6f8a12]" />Notification or hand-off</span>
         <span className="inline-flex items-center gap-2"><i className="w-6 border-t-2 border-dashed border-[#B4D234]" />{F.gold}</span>
         <span className="inline-flex items-center gap-2"><i className="w-6 border-t-2 border-dashed border-neutral-400" />Posted to {erpIn()}</span>
@@ -371,7 +448,7 @@ export function E2EFlow({ s }) {
         <ol className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
           {steps.map((x, i) => (
             <li key={i} className="flex gap-4 border-t border-black/15 pt-5">
-              <span className="font-mono text-xs text-neutral-500 pt-1">{pad(i + 1)}</span>
+              <span className="font-mono text-xs text-neutral-500 pt-1 shrink-0">{pad(i + 1)}</span>
               <span><Tx text={x.title} className="block font-serif text-xl mb-1" /><Tx text={x.text} className="block text-sm text-neutral-600 leading-relaxed" /></span>
             </li>
           ))}
@@ -429,8 +506,22 @@ export function Compare({ s }) {
   return (
     <Section anchor={s.anchor} tone={toneOf(s)}>
       <SecHead s={s} />
-      <div className="overflow-x-auto rounded-3xl border border-black/10 bg-white">
-        <table className="w-full min-w-[720px] text-left text-sm">
+      {/* Phones and tablets: one card per row */}
+      <div className="lg:hidden grid sm:grid-cols-2 gap-3">
+        {(s.rows || []).map((r, k) => (
+          <div key={k} className="rounded-2xl bg-white border border-black/10 overflow-hidden">
+            <Tx text={r.feature} className="block px-5 pt-5 pb-3 font-serif text-xl" />
+            {c.map((h, i) => (
+              <div key={i} className={`px-5 py-3 text-sm leading-relaxed ${i === 0 ? 'bg-[#B4D234]/10 text-neutral-900' : 'text-neutral-500 border-t border-black/5'}`}>
+                <span className="block text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-1">{h}</span>
+                <span className="flex gap-2">{i === 0 && <Check className="w-4 h-4 mt-0.5 shrink-0" />}<Tx text={(r.values || [])[i]} /></span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="hidden lg:block rounded-3xl border border-black/10 bg-white overflow-hidden">
+        <table className="w-full text-left text-sm">
           <thead>
             <tr>
               <th className="p-5 md:p-6 w-[28%]" />

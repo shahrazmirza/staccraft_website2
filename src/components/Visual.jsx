@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { visual } from '../legacy/visuals';
-import { asset } from '../site';
+import { visual, icon } from '../legacy/visuals';
+import { asset, brand } from '../site';
 import { Tx } from './ui';
 
 // Browser-window frame used for real screenshots (DESIGN_GUIDELINES.md §6).
@@ -31,7 +31,42 @@ export default function Visual({ s }) {
   }
   const html = visual(s);
   if (!html) return null;
+  if (s.visual === 'ecosystem') {
+    return (
+      <>
+        <div className="mk hidden lg:block" dangerouslySetInnerHTML={{ __html: html }} />
+        <EcosystemMobile />
+      </>
+    );
+  }
   return <div className="mk" dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+// Phone and tablet version of the platform map: the same modules, as a grid around the platform.
+const ECO = [
+  ['store', 'Web store & eCommerce'], ['chart', 'Reporting & insights'], ['dam', 'Digital assets (DAM)'], ['brush', 'Design & kit builder'],
+  ['po', 'Purchasing & production'], ['jersey', 'Teamwear & club stores'], ['locker', 'Locker Room'], ['b2b', 'Wholesale (B2B)'],
+  ['monitor', 'Dealer portal'], ['factory', 'Supplier portal'], ['warehouse', 'Warehousing (3PL or WMS)'], ['calc', 'Accounting & ERP'],
+  ['truck', 'Distribution & delivery'], ['api', 'API & integrations'],
+];
+function EcosystemMobile() {
+  return (
+    <div className="lg:hidden rounded-3xl bg-white border border-black/10 p-5">
+      <div className="flex justify-center mb-5">
+        <span className="inline-flex items-center px-5 py-2.5 rounded-full bg-[#231F20]">
+          <img src={asset(brand.logoLight) || '/tpl/logo-light.png'} alt={brand.name} className="h-6 w-auto" />
+        </span>
+      </div>
+      <ul className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-3 gap-2">
+        {ECO.map(([ic, label]) => (
+          <li key={label} className="flex items-center gap-2 rounded-xl bg-[#F1EFE6] px-2.5 py-2.5 text-[13px] leading-tight [hyphens:auto]">
+            <span className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0 [&_svg]:w-4 [&_svg]:h-4" dangerouslySetInnerHTML={{ __html: icon(ic) }} />
+            <span>{label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 // Hero "console": dark title bar with view tabs and status, a number ribbon, then the chosen view.

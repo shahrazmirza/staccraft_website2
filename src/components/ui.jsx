@@ -14,7 +14,7 @@ export function Tx({ text, as: Tag = 'span', className }) {
 // {braces} in content.json are accented; with `auto`, the last word is accented instead.
 export function accentHtml(text, auto) {
   let h = tx(text || '');
-  if (/\{[^}]+\}/.test(h)) return h.replace(/\{([^}]+)\}/g, '<span class="serif-italic-accent">$1</span>');
+  if (/\{[^}]+\}/.test(h)) return h.replace(/\{([^}]+)\}/g, (m, w) => `<span class="serif-italic-accent${/\s/.test(w.trim()) ? ' multi' : ''}">${w}</span>`);
   if (auto) return h.replace(/(\S+)\s*$/, '<span class="serif-italic-accent">$1</span>');
   return h;
 }

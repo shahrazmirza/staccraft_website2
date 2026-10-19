@@ -415,3 +415,32 @@
 .mk .ba .ba-l.bad{fill:var(--muted)}
 .mk .ba .ba-e.good{stroke:var(--lime-ink)}
 .mk .ba .ba-ahg{fill:var(--lime-ink)}
+/* Diagrams scale to their frame; below 1024px a stacked version replaces them (src/sections/Sections.jsx) */
+.mk .e2e,.mk svg.eco,.mk svg.sync,.mk svg.ba,.mk svg.ten{min-width:0}
+/* Example-screen tables fit their card instead of scrolling sideways */
+@media (max-width:1279px){
+  .mk .tbl-wrap{overflow-x:visible}
+  .mk table.t{width:100%}
+  .mk table.t th{white-space:normal}
+  .mk table.t td{white-space:normal;overflow-wrap:anywhere}
+}
+/* Phones */
+@media (max-width:640px){
+  .mk table.t{font-size:11px}
+  .mk table.t th{font-size:9px;letter-spacing:.02em;padding:5px 3px}
+  .mk table.t td{padding:6px 3px}
+  .mk table.mx td.q span{min-width:0;width:100%}
+  .mk table.t td.in span{min-width:0;padding:2px 4px}
+  .mk .pill{white-space:nowrap;font-size:9px;padding:2px 6px}
+  .mk .swatch{margin-right:4px}
+  .mk .stepper{flex-wrap:wrap;row-gap:8px}
+  .mk .stepper span{flex:1 1 28%}
+  .mk .chan{flex-wrap:wrap}
+  .mk .mods{grid-template-columns:1fr 1fr}
+  .mk .mod.yours{transform:none;grid-column:1 / -1 !important}
+  .mk .ui-body{min-width:0}
+}
+@media (max-width:400px){
+  .mk .kpis{grid-template-columns:1fr 1fr}
+  .mk .kpi .v{font-size:1.35rem}
+}
