@@ -131,3 +131,11 @@ mark.ph { background: rgba(180,210,52,.25); color: #231F20; padding: 0 .3em; bor
 .prose-sc a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #B4D234; text-decoration-thickness: 2px; }
 .prose-sc strong { color: #231F20; font-weight: 600; }
 .prose-sc .callout { border-left: 3px solid #B4D234; background: #F1EFE6; padding: 1rem 1.25rem; border-radius: 0 12px 12px 0; color: #231F20; }
+
+/* Grid children may shrink below their content's width, so nothing pushes a card wider than the screen */
+main .grid > * { min-width: 0; }
+
+/* Multi-word accents wrap like normal text, with the highlighter on each line */
+.serif-italic-accent.multi { display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  background: linear-gradient(transparent 62%, rgba(180,210,52,.85) 62%, rgba(180,210,52,.85) 92%, transparent 92%); padding: 0 .05em; }
+.serif-italic-accent.multi::before { content: none; }

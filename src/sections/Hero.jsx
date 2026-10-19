@@ -51,11 +51,11 @@ export default function Hero({ s }) {
             <div className="lg:col-span-8 fade-up">
               <Badge text={s.badge || s.eyebrow} tag={s.badgeTag} />
               {s.kicker || words.length ? (
-                <h1 className="font-serif text-[46px] leading-[0.95] sm:text-[72px] md:text-[96px] tracking-[-0.03em] font-medium">
+                <h1 className="font-serif text-[42px] leading-[0.95] sm:text-[72px] md:text-[96px] tracking-[-0.03em] font-medium">
                   <Tx text={s.kicker} /> {words.length > 0 && <Rotator words={words} />}
                 </h1>
               ) : (
-                <Heading as="h1" auto text={s.heading} className="font-serif text-[46px] leading-[0.95] sm:text-[72px] md:text-[96px] tracking-[-0.03em] font-medium" />
+                <Heading as="h1" auto text={s.heading} className="font-serif text-[42px] leading-[0.95] sm:text-[72px] md:text-[96px] tracking-[-0.03em] font-medium" />
               )}
             </div>
             <div className="lg:col-span-4 space-y-6 fade-up">
