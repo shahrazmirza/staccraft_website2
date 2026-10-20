@@ -48,9 +48,18 @@ Content is edited in the live prototype, using **Manage site**, then **Publish**
 
 `look` and `accent` are used by the prototype only. This site always uses the design in `DESIGN_GUIDELINES.md`.
 
+## Link previews and search
+
+Teams, Slack, LinkedIn and search engines read a page's HTML without running JavaScript, so the build writes each page's title, `description` (from `content.json`) and preview image into its own HTML file (`vite.config.js`, `pageMeta`). The preview image is `public/og-image.png` (1200×630).
+
+Preview images need the site's full address. On Vercel it's filled in automatically. Elsewhere, set the `SITE_URL` environment variable for the build, for example `SITE_URL=https://staccraft.com`.
+
+Teams and LinkedIn cache previews for a while. To check a change straight away, share the link with something added to the end, such as `?v=2`.
+
 ## Before going live
 
 - Replace the remaining `[placeholders]`. The prototype editor's Pages tab shows a count for each page.
 - Get Kookaburra Sport's sign-off on the Customers page and its quote.
 - Set `formEndpoint` if enquiries should arrive without the visitor's email app.
 - Add the GA4 ID and set `analyticsLive` to `true`.
+- Set `SITE_URL` in the Azure build once the domain is known, so link previews show the image.
