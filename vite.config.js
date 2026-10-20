@@ -8,6 +8,9 @@ import fs from 'fs';
 // into the HTML at build time: dist/index.html for Home and a copy per page for the rest.
 // Preview images need a full address: set SITE_URL (e.g. https://staccraft.com) where you build;
 // on Vercel the production domain is used automatically.
+// Bump when public/og-image.png changes, so Teams, LinkedIn etc. fetch the new image instead of a saved copy.
+const OG_IMAGE_VERSION = 2;
+
 function pageMeta() {
   const content = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'content.json'), 'utf8'));
   const { brand = {}, pages = [] } = content;
@@ -20,14 +23,14 @@ function pageMeta() {
     const title = home ? `${brand.name} · ${brand.tagline || ''}` : `${p.title} · ${brand.name}`;
     const desc = plain(p.description || (p.article && p.article.excerpt) || brand.tagline || '');
     const url = site + (home ? '/' : '/' + p.id);
-    const img = site + '/og-image.png';
+    const img = site + '/og-image.png?v=' + OG_IMAGE_VERSION;
     return [
       `<title>${esc(title)}</title>`,
       `<meta name="description" content="${esc(desc)}" />`,
       `<meta property="og:type" content="${p.article ? 'article' : 'website'}" />`,
       `<meta property="og:site_name" content="${esc(brand.name)}" />`,
       `<meta property="og:locale" content="en_AU" />`,
-      `<meta property="og:title" content="${esc(home ? brand.name + ' · ' + (brand.tagline || '') : p.title)}" />`,
+      `<meta property="og:title" content="${esc(home ? brand.name : p.title + " · " + brand.name)}" />`,
       `<meta property="og:description" content="${esc(desc)}" />`,
       site && `<meta property="og:url" content="${esc(url)}" />`,
       site && `<link rel="canonical" href="${esc(url)}" />`,
