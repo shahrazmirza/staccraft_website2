@@ -10,7 +10,6 @@ Live prototype and content editor: https://claude.ai/artifact/YJgSxn1DRUKS7oSreo
 - `content.json` holds all the words: every page, section, menu entry and brand setting. The page reads it when it loads.
 - `live/` holds screenshots of the live Kookaburra stores, used on the Customers page.
 - `tpl/` holds the logos and other template images.
-- `photos/` holds Unsplash photos used across the industry, sport, About, Supply chain and Commerce pages and as article covers. `photos/CREDITS.md` lists each photographer. An article's cover is set with `article.cover` in `content.json`; without one, the generated cover art is used.
 
 ## Run it locally
 

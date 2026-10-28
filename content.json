@@ -269,7 +269,7 @@
               "icon": "cricket",
               "text": "Club stores, team kit and pre-orders timed for the summer season.",
               "stat": "12 cricket clubs live on one club portal",
-              "image": "photos/cricket.jpg",
+              "image": "",
               "link": "#cricket"
             },
             {
@@ -277,7 +277,7 @@
               "icon": "hockey",
               "text": "From the national team's replica kit to program ranges and club stores.",
               "stat": "A national team's official store",
-              "image": "photos/hockey.jpg",
+              "image": "",
               "link": "#hockey"
             }
           ]
@@ -1285,9 +1285,9 @@
           "secondaryLabel": "How we compare",
           "secondaryLink": "#why",
           "links": [],
-          "visual": "image",
-          "image": "photos/packing-order.jpg",
-          "imageAlt": "An online order being packed for dispatch",
+          "visual": "none",
+          "image": "",
+          "imageAlt": "",
           "imageSite": ""
         },
         {
@@ -1494,9 +1494,9 @@
           ],
           "linkLabel": "",
           "link": "",
-          "visual": "image",
-          "image": "photos/shopper.jpg",
-          "imageAlt": "A shopper holding a phone and card while buying online",
+          "visual": "none",
+          "image": "",
+          "imageAlt": "",
           "imageSite": "",
           "reverse": false
         },
@@ -1869,9 +1869,9 @@
           ],
           "linkLabel": "",
           "link": "",
-          "visual": "image",
-          "image": "photos/factory.jpg",
-          "imageAlt": "Workers sewing garments in a factory",
+          "visual": "none",
+          "image": "",
+          "imageAlt": "",
           "imageSite": "",
           "reverse": false
         },
@@ -2696,9 +2696,9 @@
           ],
           "linkLabel": "",
           "link": "",
-          "visual": "image",
-          "image": "photos/print-shop.jpg",
-          "imageAlt": "A screen printing press in a garment workshop",
+          "visual": "none",
+          "image": "",
+          "imageAlt": "",
           "imageSite": "",
           "reverse": true
         },
@@ -2752,9 +2752,9 @@
           ],
           "linkLabel": "Explore the Locker Room",
           "link": "#locker-room",
-          "visual": "image",
-          "image": "photos/jersey-back.jpg",
-          "imageAlt": "The back of a numbered team jersey",
+          "visual": "kitcheck",
+          "image": "",
+          "imageAlt": "",
           "imageSite": "",
           "reverse": false
         },
@@ -2977,9 +2977,9 @@
           ],
           "linkLabel": "",
           "link": "",
-          "visual": "image",
-          "image": "photos/junior-team.jpg",
-          "imageAlt": "A coach talking to a junior team in club kit",
+          "visual": "locker",
+          "image": "",
+          "imageAlt": "",
           "imageSite": "",
           "reverse": false
         },
@@ -3404,9 +3404,9 @@
           ],
           "linkLabel": "Commerce features",
           "link": "#commerce",
-          "visual": "image",
-          "image": "photos/cricket-ball.jpg",
-          "imageAlt": "A worn cricket ball resting on grass",
+          "visual": "catalogue",
+          "image": "",
+          "imageAlt": "",
           "imageSite": "",
           "reverse": false
         },
@@ -3422,7 +3422,7 @@
               "icon": "cricket",
               "text": "Club stores, team kit and pre-orders timed for the summer season.",
               "stat": "12 cricket clubs live on one club portal",
-              "image": "photos/cricket.jpg",
+              "image": "",
               "link": "#cricket"
             },
             {
@@ -3430,7 +3430,7 @@
               "icon": "hockey",
               "text": "From the national team's replica kit to program ranges and club stores.",
               "stat": "A national team's official store",
-              "image": "photos/hockey.jpg",
+              "image": "",
               "link": "#hockey"
             }
           ]
@@ -3509,9 +3509,9 @@
           "secondaryLabel": "Read the customer story",
           "secondaryLink": "#case-studies",
           "links": [],
-          "visual": "image",
-          "image": "photos/cricket.jpg",
-          "imageAlt": "A wicketkeeper and batter in club whites during a match",
+          "visual": "locker-kit",
+          "image": "",
+          "imageAlt": "",
           "imageSite": ""
         },
         {
@@ -3618,9 +3618,9 @@
           "secondaryLabel": "Read the customer story",
           "secondaryLink": "#case-studies",
           "links": [],
-          "visual": "image",
-          "image": "photos/hockey.jpg",
-          "imageAlt": "Players competing in a field hockey match",
+          "visual": "catalogue",
+          "image": "",
+          "imageAlt": "",
           "imageSite": ""
         },
         {
@@ -4551,10 +4551,9 @@
           "secondaryLabel": "",
           "secondaryLink": "",
           "links": [],
-          "visual": "image",
-          "image": "photos/team.jpg",
-          "imageAlt": "A small team working together around laptops",
-          "imageSite": ""
+          "visual": "none",
+          "image": "",
+          "imageAlt": ""
         },
         {
           "type": "richtext",
@@ -4627,8 +4626,7 @@
         "category": "Teamwear & clubs",
         "date": "2026-09-29",
         "author": "StacCraft team",
-        "excerpt": "Club stores are where teamwear brands win or lose a season. Here's how to set them up so clubs, players and your team all do less admin.",
-        "cover": "photos/club-cricket.jpg"
+        "excerpt": "Club stores are where teamwear brands win or lose a season. Here's how to set them up so clubs, players and your team all do less admin."
       },
       "sections": [
         {
@@ -4660,8 +4658,7 @@
         "category": "Supply chain",
         "date": "2026-09-15",
         "author": "StacCraft team",
-        "excerpt": "Made-to-order kit is profitable when buying follows selling. How to turn a closed pre-order window into accurate purchase orders in minutes.",
-        "cover": "photos/warehouse.jpg"
+        "excerpt": "Made-to-order kit is profitable when buying follows selling. How to turn a closed pre-order window into accurate purchase orders in minutes."
       },
       "sections": [
         {
@@ -4693,8 +4690,7 @@
         "category": "Integrations",
         "date": "2026-09-01",
         "author": "StacCraft team",
-        "excerpt": "Connecting a web store to Sage X3 goes wrong when everything syncs both ways. A simple rule for deciding which system owns which data.",
-        "cover": "photos/erp-desk.jpg"
+        "excerpt": "Connecting a web store to Sage X3 goes wrong when everything syncs both ways. A simple rule for deciding which system owns which data."
       },
       "sections": [
         {
@@ -4726,8 +4722,7 @@
         "category": "Marketing & SEO",
         "date": "2026-08-25",
         "author": "StacCraft team",
-        "excerpt": "Search still drives more ready-to-buy shoppers than any other channel. A practical checklist for product pages, collections, technical SEO and AI search.",
-        "cover": "photos/analytics.jpg"
+        "excerpt": "Search still drives more ready-to-buy shoppers than any other channel. A practical checklist for product pages, collections, technical SEO and AI search."
       },
       "sections": [
         {
@@ -4759,8 +4754,7 @@
         "category": "Reviews",
         "date": "2026-08-18",
         "author": "StacCraft team",
-        "excerpt": "Reviews lift conversion and search visibility, but the ACCC is clear about what businesses can't do with them. How to collect, moderate and display reviews properly.",
-        "cover": "photos/phone-shop.jpg"
+        "excerpt": "Reviews lift conversion and search visibility, but the ACCC is clear about what businesses can't do with them. How to collect, moderate and display reviews properly."
       },
       "sections": [
         {
@@ -4792,8 +4786,7 @@
         "category": "Apparel",
         "date": "2026-08-12",
         "author": "StacCraft team",
-        "excerpt": "Variant limits, messy size data and per-size buying are the quiet problems of apparel ecommerce. How to structure a catalogue that scales.",
-        "cover": "photos/clothes-rack.jpg"
+        "excerpt": "Variant limits, messy size data and per-size buying are the quiet problems of apparel ecommerce. How to structure a catalogue that scales."
       },
       "sections": [
         {
