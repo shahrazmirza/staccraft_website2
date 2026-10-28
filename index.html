@@ -1872,6 +1872,9 @@ svg.scene text{font-family:var(--body)}
 .post .post-cover{position:relative;display:block;height:190px;border-bottom:1px solid color-mix(in oklab,var(--hue) 16%,var(--line))}
 .post .post-cover svg.scene{width:100%;height:100%;transition:transform .6s ease}
 .post:hover .post-cover svg.scene{transform:scale(1.05)}
+.ins-cv,.nu-art,.art-cover{position:relative;overflow:hidden}
+.cover-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.post:hover .cover-photo{transform:scale(1.05)}
 .post-time{position:absolute;right:12px;top:12px;font-family:var(--mono);font-size:.66rem;padding:3px 9px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
 .post-flag{position:absolute;left:14px;top:14px;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--paper)}
 .post .post-b{padding:22px 24px 20px;gap:10px;grid-template-rows:auto auto 1fr auto}
@@ -1962,7 +1965,7 @@ svg.scene text{font-family:var(--body)}
 .nu-art{min-height:200px}
 @media (max-width:900px){.art-top{grid-template-columns:1fr;gap:28px}.art-cover{max-width:560px}}
 @media (max-width:600px){.next-up{grid-template-columns:1fr}.nu-art{min-height:150px;order:-1}}
-@media (prefers-reduced-motion:reduce){.post,.post .post-cover svg.scene,.ins-card,.next-up,.sp-card,.read-bar i{transition:none}}
+@media (prefers-reduced-motion:reduce){.post,.post .post-cover svg.scene,.cover-photo,.ins-card,.next-up,.sp-card,.read-bar i{transition:none}}
 :root.tpl.nordic.atelier .story,:root.tpl.nordic.atelier .sp-card,:root.tpl.nordic.atelier .ins-card,:root.tpl.nordic.atelier .art-cover,:root.tpl.nordic.atelier .next-up,:root.tpl.nordic.atelier .ins-badge{border-radius:2px}
 :root.tpl.nordic.atelier .post-flag,:root.tpl.nordic.atelier .post-time,:root.tpl.nordic.atelier .art-chap{border-radius:2px}
 :root.tpl.nordic.atelier .story-prose>p:first-of-type::first-letter{font-family:var(--serif);font-weight:500}
@@ -2494,7 +2497,7 @@ function mock(kind){
     const ps=articlePages().slice(0,3); if(!ps.length) return "";
     const topics=articlePages().map(p=>p.article.category).filter((c,i,a)=>c&&a.indexOf(c)===i).length;
     return '<div class="ins-stack">'+ps.map((p,i)=>{ const t=catTheme(p.article.category);
-      return '<a class="ins-card c'+i+'" href="#'+esc(p.id)+'" style="--hue:'+t.hue+'"><span class="ins-cv cover-bg">'+coverArt(p.article.category)+'</span><span class="ins-b"><span class="post-k"><i></i>'+esc(p.article.category||"Insights")+'</span><b>'+tx(p.title)+'</b><span class="post-m">'+esc(fmtDate(p.article.date))+' · '+articleMins(p)+' min read</span></span></a>'; }).join("")+
+      return '<a class="ins-card c'+i+'" href="#'+esc(p.id)+'" style="--hue:'+t.hue+'"><span class="ins-cv cover-bg">'+coverOf(p.article)+'</span><span class="ins-b"><span class="post-k"><i></i>'+esc(p.article.category||"Insights")+'</span><b>'+tx(p.title)+'</b><span class="post-m">'+esc(fmtDate(p.article.date))+' · '+articleMins(p)+' min read</span></span></a>'; }).join("")+
       '<div class="ins-badge"><b>'+articlePages().length+'</b><span>guides across '+topics+' topics</span></div></div>';
   }
   case "ecosystem": return '<div class="eco-wrap"><div class="eco-scroll">'+ecoSvg()+'</div></div>';
@@ -2979,13 +2982,13 @@ const R = {
     const story=a?storyPages():[]; const ci=story.findIndex(x=>x.p===p); const nx=ci>=0?(story[ci+1]||(story.length>1?story[0]:null)):null;
     const related=a?articlePages().filter(x=>x!==p&&(!nx||x!==nx.p)).sort((x,y)=>(y.article.category===a.category)-(x.article.category===a.category)).slice(0,3):[];
     const th=a?catTheme(a.category):null;
-    const nextUp=nx?'<a class="next-up" href="#'+esc(nx.p.id)+'" style="--hue:'+catTheme(nx.p.article.category).hue+'"><span class="nu-b"><span class="nu-k">'+(ci===story.length-1?'Back to the start \u00b7 Chapter 1':'Next in the story \u00b7 Chapter '+(ci+2))+' \u00b7 '+esc(nx.stage)+'</span><b>'+tx(nx.p.title)+'</b>'+(nx.p.article.excerpt?'<span class="nu-p">'+tx(nx.p.article.excerpt)+'</span>':'')+'<span class="nu-go">Keep reading \u2192</span></span><span class="nu-art cover-bg" aria-hidden="true">'+coverArt(nx.p.article.category)+'</span></a>':'';
+    const nextUp=nx?'<a class="next-up" href="#'+esc(nx.p.id)+'" style="--hue:'+catTheme(nx.p.article.category).hue+'"><span class="nu-b"><span class="nu-k">'+(ci===story.length-1?'Back to the start \u00b7 Chapter 1':'Next in the story \u00b7 Chapter '+(ci+2))+' \u00b7 '+esc(nx.stage)+'</span><b>'+tx(nx.p.title)+'</b>'+(nx.p.article.excerpt?'<span class="nu-p">'+tx(nx.p.article.excerpt)+'</span>':'')+'<span class="nu-go">Keep reading \u2192</span></span><span class="nu-art cover-bg" aria-hidden="true">'+coverOf(nx.p.article)+'</span></a>':'';
     const url=location.href.split("#")[0]+"#"+p.id; const share=encodeURIComponent(url), st=encodeURIComponent(s.heading||p.title);
     const hd=a?'<div class="art-top"><header class="art-h"><nav class="crumbs" aria-label="Breadcrumb">'+(ins?'<a href="#'+esc(ins.id)+'">'+esc(ins.navLabel||ins.title)+'</a> › ':'')+esc(a.category||"")+'</nav>'+
         '<span class="art-chap"><i></i>'+(ci>=0?'Chapter '+(ci+1)+' of '+story.length+' \u00b7 '+esc(story[ci].stage):esc(a.category||"Insights"))+'</span>'+
         '<h1>'+tx(s.heading||p.title)+'</h1>'+(s.standfirst?'<p class="art-stand">'+tx(s.standfirst)+'</p>':'')+
         '<div class="art-by"><span class="av" aria-hidden="true">'+esc(initials(S.content.brand.name))+'</span><span><b>'+esc(a.author||S.content.brand.name)+'</b>'+esc([fmtDate(a.date),readMinutes(r.words)+" min read"].filter(Boolean).join(" \u00b7 "))+'</span></div></header>'+
-        '<div class="art-cover cover-bg" aria-hidden="true">'+coverArt(a.category)+'</div></div>'
+        '<div class="art-cover cover-bg" aria-hidden="true">'+coverOf(a)+'</div></div>'
       :'<header class="art-h"><h1>'+tx(s.heading||p.title)+'</h1>'+(s.standfirst?'<p class="art-stand">'+tx(s.standfirst)+'</p>':'')+
       (meta.length?'<p class="art-meta">'+meta.map(m=>'<span>'+esc(m)+'</span>').join("")+'</p>':'')+'</header>';
     return '<section class="sec art'+(a?' art-story':'')+'"'+(a?' style="--hue:'+th.hue+'"':'')+'>'+(a?'<div class="read-bar" aria-hidden="true"><i></i></div>':'')+'<div class="wrap">'+hd+
@@ -3074,6 +3077,8 @@ function catTheme(c){ const t=CAT_THEME[c]; if(t&&look()==="atelier"&&CAT_HUE_AT
 function articleMins(p){ return readMinutes(md((p.sections.find(s=>s.type==="article")||{}).body).words); }
 function initials(n){ n=String(n||""); const c=n.match(/[A-Z]/g); return (c&&c.length>1?c.slice(0,2).join(""):n.slice(0,2)).toUpperCase(); }
 function storyPages(){ const all=articlePages(); return STORY.map(([c,stage])=>{ const p=all.find(x=>x.article.category===c); return p?{p,stage}:null; }).filter(Boolean); }
+// An article's own cover photo when it has one, otherwise the generated art for its topic.
+function coverOf(a){ return a.cover?'<img class="cover-photo" src="'+blobUrl(a.cover)+'" alt="" loading="lazy">':coverArt(a.category); }
 function coverArt(cat){
   const t=catTheme(cat); const ch=t.chips;
   const card=(x,y,w,c)=>'<g transform="translate('+x+' '+y+')"><rect class="sc-card" width="'+w+'" height="50" rx="11"/><circle class="sc-dot" cx="16" cy="18" r="4"/><text class="sc-t" x="28" y="22">'+esc(c[0])+'</text><text class="sc-s" x="16" y="38">'+esc(c[1])+'</text></g>';
@@ -3086,7 +3091,7 @@ function coverArt(cat){
 }
 function postCard(p,feat){
   const a=p.article; const t=catTheme(a.category); const mins=articleMins(p); const by=a.author||S.content.brand.name;
-  return '<a class="post'+(feat?' feat':'')+'" href="#'+esc(p.id)+'" style="--hue:'+t.hue+'"><span class="post-cover cover-bg" aria-hidden="true">'+coverArt(a.category)+(feat?'<span class="post-flag">Featured story</span>':'')+'<span class="post-time">'+mins+' min read</span></span>'+
+  return '<a class="post'+(feat?' feat':'')+'" href="#'+esc(p.id)+'" style="--hue:'+t.hue+'"><span class="post-cover cover-bg" aria-hidden="true">'+coverOf(a)+(feat?'<span class="post-flag">Featured story</span>':'')+'<span class="post-time">'+mins+' min read</span></span>'+
     '<span class="post-b"><span class="post-k"><i></i>'+esc(a.category||"Insights")+'</span><h3>'+tx(p.title)+'</h3>'+(a.excerpt?'<p>'+tx(a.excerpt)+'</p>':'')+
     '<span class="post-m"><span class="av" aria-hidden="true">'+esc(initials(S.content.brand.name))+'</span><span class="who"><b>'+esc(by)+'</b>'+esc(fmtDate(a.date))+'</span><span class="post-go">'+(feat?'Read the story':'Read')+' \u2192</span></span></span></a>';
 }
@@ -3417,7 +3422,7 @@ function edPagesTab(){
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="ef"><label for="pg-n-'+i+'">Menu label</label><input type="text" id="pg-n-'+i+'" data-p="pages.'+i+'.navLabel" value="'+esc(p.navLabel)+'"></div>'+
       '<div class="ef"><label for="pg-g-'+i+'">Menu group</label><input type="text" id="pg-g-'+i+'" data-p="pages.'+i+'.navGroup" value="'+esc(p.navGroup)+'" placeholder="None"></div></div>'+
       '<div class="ef"><label for="pg-d-'+i+'">Search description</label><input type="text" id="pg-d-'+i+'" data-p="pages.'+i+'.description" value="'+esc(p.description||"")+'" placeholder="One sentence shown in search results"></div>'+
-      (p.article?'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+[["category","Topic"],["date","Published (YYYY-MM-DD)"],["author","Author"],["updated","Updated (YYYY-MM-DD)"]].map(f=>'<div class="ef"><label for="pg-a-'+f[0]+'-'+i+'">'+f[1]+'</label><input type="text" id="pg-a-'+f[0]+'-'+i+'" data-p="pages.'+i+'.article.'+f[0]+'" value="'+esc(p.article[f[0]]||"")+'"></div>').join("")+'</div><div class="ef"><label for="pg-a-ex-'+i+'">Card summary</label><input type="text" id="pg-a-ex-'+i+'" data-p="pages.'+i+'.article.excerpt" value="'+esc(p.article.excerpt||"")+'"></div>':'')+
+      (p.article?'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+[["category","Topic"],["date","Published (YYYY-MM-DD)"],["author","Author"],["updated","Updated (YYYY-MM-DD)"],["cover","Cover photo (optional, e.g. photos/name.jpg)"]].map(f=>'<div class="ef"><label for="pg-a-'+f[0]+'-'+i+'">'+f[1]+'</label><input type="text" id="pg-a-'+f[0]+'-'+i+'" data-p="pages.'+i+'.article.'+f[0]+'" value="'+esc(p.article[f[0]]||"")+'"></div>').join("")+'</div><div class="ef"><label for="pg-a-ex-'+i+'">Card summary</label><input type="text" id="pg-a-ex-'+i+'" data-p="pages.'+i+'.article.excerpt" value="'+esc(p.article.excerpt||"")+'"></div>':'')+
 
       '<label class="ef-check"><input type="checkbox" data-p="pages.'+i+'.navSub" data-bool="1"'+(p.navSub?' checked':'')+'> Indent under the item above in its menu</label>'+
       '<label class="ef-check"><input type="checkbox" data-p="pages.'+i+'.showInNav" data-bool="1"'+(p.showInNav?' checked':'')+'> Show in menu</label></div>'+
